@@ -259,6 +259,24 @@
     [data-theme="dark"] .icon-moon { display: block; }
     [data-theme="light"] .icon-sun { display: block; }
 
+    /* Language toggle */
+    .lang-btn {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.35s;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+
     /* Mobile toggle */
     .nav-toggle {
       display: none;
@@ -1598,6 +1616,7 @@
       .hero-grid-bg { display: none; }
       .nav-links { display: none; }
       .theme-btn.desktop-only { display: none; }
+      .lang-btn.desktop-only { display: none; }
       .nav-toggle { display: block; }
       .mobile-menu { display: flex; }
       .about-grid { grid-template-columns: 1fr; }
@@ -1638,16 +1657,17 @@
     <div class="nav-logo">cesar.canales</div>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#about" data-section="about">About</a></li>
-        <li><a href="#experience" data-section="experience">Experience</a></li>
-        <li><a href="#skills" data-section="skills">Skills</a></li>
-        <li><a href="#impact" data-section="impact">Impact</a></li>
+        <li><a href="#about" data-section="about" data-i18n="nav.about">About</a></li>
+        <li><a href="#experience" data-section="experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#skills" data-section="skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#impact" data-section="impact" data-i18n="nav.impact">Impact</a></li>
       </ul>
+      <button class="lang-btn desktop-only" id="langToggle" aria-label="Toggle language">EN</button>
       <button class="theme-btn desktop-only" id="themeToggle" aria-label="Toggle theme">
         <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
-      <a href="#contact" class="nav-cta">Hire Me</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Hire Me</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -1657,12 +1677,13 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="closeMobile()">About</a>
-    <a href="#experience" onclick="closeMobile()">Experience</a>
-    <a href="#skills" onclick="closeMobile()">Skills</a>
-    <a href="#impact" onclick="closeMobile()">Impact</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
-    <button class="mobile-theme-btn" id="mobileThemeToggle">Switch Theme</button>
+    <a href="#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
+    <a href="#experience" onclick="closeMobile()" data-i18n="nav.experience">Experience</a>
+    <a href="#skills" onclick="closeMobile()" data-i18n="nav.skills">Skills</a>
+    <a href="#impact" onclick="closeMobile()" data-i18n="nav.impact">Impact</a>
+    <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
+    <button class="mobile-theme-btn" id="mobileLangToggle" data-i18n="nav.langSwitch">EN / ES</button>
+    <button class="mobile-theme-btn" id="mobileThemeToggle" data-i18n="nav.themeSwitch">Switch Theme</button>
   </div>
 
   <!-- Back to Top -->
@@ -1678,7 +1699,7 @@
     <div class="hero-left">
       <div class="hero-tag">
         <span class="status-dot"></span>
-        Available for hire
+        <span data-i18n="hero.tag">Available for hire</span>
       </div>
       <div class="hero-identity">
         <div class="avatar-ring avatar-pulse">
@@ -1689,17 +1710,17 @@
           <span class="hero-name-gradient">Canales</span>
         </h1>
       </div>
-      <p class="hero-title">Senior Full Stack Software Engineer</p>
-      <p class="hero-summary">
+      <p class="hero-title" data-i18n="hero.title">Senior Full Stack Software Engineer</p>
+      <p class="hero-summary" data-i18n="hero.summary" data-i18n-html="true">
         8+ years building high-traffic platforms for <strong>IBM</strong>, <strong>3Pillar Global</strong> &amp; <strong>Softtek</strong>.
         From migrating 30+ legacy components to optimizing systems serving 1M+ users — I turn complexity into clean, scalable solutions.
       </p>
       <div class="hero-actions">
         <a href="mailto:cesar.canales123@gmail.com" class="btn btn-primary">
           <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-          Get in Touch
+          <span data-i18n="hero.cta">Get in Touch</span>
         </a>
-        <a href="#experience" class="btn btn-outline">View Experience</a>
+        <a href="#experience" class="btn btn-outline" data-i18n="hero.viewExp">View Experience</a>
         <a href="./Cesar_Canales_Resume.pdf" download class="btn btn-ghost">
           <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           CV
@@ -1730,35 +1751,35 @@
   <!-- About -->
   <section id="about">
     <div class="reveal">
-      <div class="section-label">About Me</div>
-      <h2 class="section-title">More Than Just Code</h2>
+      <div class="section-label" data-i18n="about.label">About Me</div>
+      <h2 class="section-title" data-i18n="about.title">More Than Just Code</h2>
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a software engineer passionate about building products that make a real difference. Based in <strong>Hidalgo, Mexico</strong>, I've spent 8+ years working remotely with international teams, shipping code that serves millions.</p>
-        <p>At <strong>IBM</strong>, I modernized the Home Depot platform used by over a million users. At <strong>3Pillar Global</strong>, I'm building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale.</p>
-        <p>I believe in TDD, code reviews, and shipping often. I'm comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.</p>
+        <p data-i18n="about.p1" data-i18n-html="true">I'm a software engineer passionate about building products that make a real difference. Based in <strong>Hidalgo, Mexico</strong>, I've spent 8+ years working remotely with international teams, shipping code that serves millions.</p>
+        <p data-i18n="about.p2" data-i18n-html="true">At <strong>IBM</strong>, I modernized the Home Depot platform used by over a million users. At <strong>3Pillar Global</strong>, I'm building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale.</p>
+        <p data-i18n="about.p3">I believe in TDD, code reviews, and shipping often. I'm comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.</p>
       </div>
       <div class="about-cards reveal">
         <div class="about-card">
-          <div class="about-card-label">Location</div>
+          <div class="about-card-label" data-i18n="about.location">Location</div>
           <div class="about-card-value">Hidalgo, Mexico</div>
-          <div class="about-card-sub">Remote-first</div>
+          <div class="about-card-sub" data-i18n="about.remote">Remote-first</div>
         </div>
         <div class="about-card">
-          <div class="about-card-label">Languages</div>
+          <div class="about-card-label" data-i18n="about.languages">Languages</div>
           <div class="lang-row">
-            <span>Spanish</span>
-            <span class="lang-badge">Native</span>
+            <span data-i18n="about.spanish">Spanish</span>
+            <span class="lang-badge" data-i18n="about.native">Native</span>
           </div>
           <div class="lang-row">
-            <span>English</span>
-            <span class="lang-badge">Professional</span>
+            <span data-i18n="about.english">English</span>
+            <span class="lang-badge" data-i18n="about.professional">Professional</span>
           </div>
         </div>
         <div class="about-card">
-          <div class="about-card-label">Education</div>
-          <div class="about-card-value">B.S. Computer Systems Engineering</div>
+          <div class="about-card-label" data-i18n="about.education">Education</div>
+          <div class="about-card-value" data-i18n="about.degree">B.S. Computer Systems Engineering</div>
           <div class="about-card-sub">Univ. Politecnica de Queretaro</div>
         </div>
       </div>
@@ -1770,8 +1791,8 @@
   <!-- What I Bring -->
   <section class="section-alt" id="value">
     <div class="reveal">
-      <div class="section-label">Why Hire Me</div>
-      <h2 class="section-title">What I Bring to the Table</h2>
+      <div class="section-label" data-i18n="value.label">Why Hire Me</div>
+      <h2 class="section-title" data-i18n="value.title">What I Bring to the Table</h2>
     </div>
     <div class="value-grid stagger-children">
       <div class="value-card reveal tilt-card card-spotlight">
@@ -1779,48 +1800,48 @@
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3 class="value-title">High-Impact Delivery</h3>
-        <p class="value-desc">I've built systems serving 1M+ users and managed platforms for 1,000+ enterprise clients. I ship features that move business metrics.</p>
+        <h3 class="value-title" data-i18n="value.v1t">High-Impact Delivery</h3>
+        <p class="value-desc" data-i18n="value.v1d">I've built systems serving 1M+ users and managed platforms for 1,000+ enterprise clients. I ship features that move business metrics.</p>
       </div>
       <div class="value-card reveal tilt-card card-spotlight">
         <div class="spotlight"></div>
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <h3 class="value-title">True Full Stack</h3>
-        <p class="value-desc">From React + TypeScript frontends to Java Spring Boot microservices, databases, and CI/CD — I own the entire stack with confidence.</p>
+        <h3 class="value-title" data-i18n="value.v2t">True Full Stack</h3>
+        <p class="value-desc" data-i18n="value.v2d">From React + TypeScript frontends to Java Spring Boot microservices, databases, and CI/CD — I own the entire stack with confidence.</p>
       </div>
       <div class="value-card reveal tilt-card card-spotlight">
         <div class="spotlight"></div>
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <h3 class="value-title">Team Multiplier</h3>
-        <p class="value-desc">I introduce best practices — TDD, GitHub Flow, code reviews, Conventional Commits — that elevate the entire team's velocity.</p>
+        <h3 class="value-title" data-i18n="value.v3t">Team Multiplier</h3>
+        <p class="value-desc" data-i18n="value.v3d">I introduce best practices — TDD, GitHub Flow, code reviews, Conventional Commits — that elevate the entire team's velocity.</p>
       </div>
       <div class="value-card reveal tilt-card card-spotlight">
         <div class="spotlight"></div>
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h3 class="value-title">Legacy Modernization</h3>
-        <p class="value-desc">Migrated 30+ AngularJS components to React at IBM. I know how to modernize codebases without breaking production.</p>
+        <h3 class="value-title" data-i18n="value.v4t">Legacy Modernization</h3>
+        <p class="value-desc" data-i18n="value.v4d">Migrated 30+ AngularJS components to React at IBM. I know how to modernize codebases without breaking production.</p>
       </div>
       <div class="value-card reveal tilt-card card-spotlight">
         <div class="spotlight"></div>
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="value-title">Quality-First Mindset</h3>
-        <p class="value-desc">TDD with Jest, integration testing, high coverage — I write code that doesn't break at 3am. Reliability is non-negotiable.</p>
+        <h3 class="value-title" data-i18n="value.v5t">Quality-First Mindset</h3>
+        <p class="value-desc" data-i18n="value.v5d">TDD with Jest, integration testing, high coverage — I write code that doesn't break at 3am. Reliability is non-negotiable.</p>
       </div>
       <div class="value-card reveal tilt-card card-spotlight">
         <div class="spotlight"></div>
         <div class="value-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
         </div>
-        <h3 class="value-title">Remote-Ready</h3>
-        <p class="value-desc">8+ years working with distributed teams across time zones. Async communication, documentation, and self-management are second nature.</p>
+        <h3 class="value-title" data-i18n="value.v6t">Remote-Ready</h3>
+        <p class="value-desc" data-i18n="value.v6d">8+ years working with distributed teams across time zones. Async communication, documentation, and self-management are second nature.</p>
       </div>
     </div>
   </section>
@@ -1830,8 +1851,8 @@
   <!-- Experience -->
   <section id="experience">
     <div class="reveal">
-      <div class="section-label">Experience</div>
-      <h2 class="section-title">Where I've Made an Impact</h2>
+      <div class="section-label" data-i18n="exp.label">Experience</div>
+      <h2 class="section-title" data-i18n="exp.title">Where I've Made an Impact</h2>
     </div>
     <div class="timeline">
       <div class="timeline-item reveal">
@@ -1914,8 +1935,8 @@
   <!-- Skills -->
   <section class="section-alt" id="skills">
     <div class="reveal">
-      <div class="section-label">Technical Skills</div>
-      <h2 class="section-title">My Toolkit</h2>
+      <div class="section-label" data-i18n="skills.label">Technical Skills</div>
+      <h2 class="section-title" data-i18n="skills.title">My Toolkit</h2>
     </div>
     <div class="skills-grid stagger-children">
       <div class="skill-card reveal">
@@ -1968,8 +1989,8 @@
   <!-- Featured Projects -->
   <section id="projects">
     <div class="reveal">
-      <div class="section-label">Projects</div>
-      <h2 class="section-title">Featured Work</h2>
+      <div class="section-label" data-i18n="projects.label">Projects</div>
+      <h2 class="section-title" data-i18n="projects.title">Featured Work</h2>
     </div>
     <div class="projects-grid stagger-children">
 
@@ -1982,8 +2003,8 @@
         </div>
         <div class="project-body">
           <div class="project-label">3Pillar Global</div>
-          <h3 class="project-name">Enterprise Monitoring Dashboard</h3>
-          <p class="project-desc">Mission-critical data center management system with real-time monitoring, used by 1,000+ enterprise clients daily. Built with React, TypeScript, and Spring Boot microservices.</p>
+          <h3 class="project-name" data-i18n="projects.p1t">Enterprise Monitoring Dashboard</h3>
+          <p class="project-desc" data-i18n="projects.p1d">Mission-critical data center management system with real-time monitoring, used by 1,000+ enterprise clients daily. Built with React, TypeScript, and Spring Boot microservices.</p>
           <div class="project-tech">
             <span>React</span><span>TypeScript</span><span>Redux</span><span>Spring Boot</span><span>MySQL</span><span>Prometheus</span>
           </div>
@@ -2005,8 +2026,8 @@
         </div>
         <div class="project-body">
           <div class="project-label">IBM / Home Depot</div>
-          <h3 class="project-name">Home Depot USA Platform</h3>
-          <p class="project-desc">Optimized and modernized the e-commerce platform serving 1M+ users. Migrated 30+ components from AngularJS to React and improved search efficiency by 20%.</p>
+          <h3 class="project-name" data-i18n="projects.p2t">Home Depot USA Platform</h3>
+          <p class="project-desc" data-i18n="projects.p2d">Optimized and modernized the e-commerce platform serving 1M+ users. Migrated 30+ components from AngularJS to React and improved search efficiency by 20%.</p>
           <div class="project-tech">
             <span>React</span><span>Redux</span><span>GraphQL</span><span>Jest</span>
           </div>
@@ -2028,8 +2049,8 @@
         </div>
         <div class="project-body">
           <div class="project-label">Softtek</div>
-          <h3 class="project-name">Video Streaming Platform</h3>
-          <p class="project-desc">Architected a complete streaming system from scratch — frontend, backend, and database. Replaced legacy PHP with modern Node.js RESTful APIs.</p>
+          <h3 class="project-name" data-i18n="projects.p3t">Video Streaming Platform</h3>
+          <p class="project-desc" data-i18n="projects.p3d">Architected a complete streaming system from scratch — frontend, backend, and database. Replaced legacy PHP with modern Node.js RESTful APIs.</p>
           <div class="project-tech">
             <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Redux</span>
           </div>
@@ -2050,25 +2071,25 @@
   <!-- Impact -->
   <section id="impact">
     <div class="reveal">
-      <div class="section-label">Impact</div>
-      <h2 class="section-title">By the Numbers</h2>
+      <div class="section-label" data-i18n="impact.label">Impact</div>
+      <h2 class="section-title" data-i18n="impact.title">By the Numbers</h2>
     </div>
     <div class="impact-grid">
       <div class="impact-card reveal">
         <div class="impact-number" data-target="8">0</div>
-        <div class="impact-label">Years Experience</div>
+        <div class="impact-label" data-i18n="impact.years">Years Experience</div>
       </div>
       <div class="impact-card reveal">
         <div class="impact-number" data-target="1000000" data-format="M">0</div>
-        <div class="impact-label">Users Impacted</div>
+        <div class="impact-label" data-i18n="impact.users">Users Impacted</div>
       </div>
       <div class="impact-card reveal">
         <div class="impact-number" data-target="30" data-suffix="+">0</div>
-        <div class="impact-label">Components Migrated</div>
+        <div class="impact-label" data-i18n="impact.components">Components Migrated</div>
       </div>
       <div class="impact-card reveal">
         <div class="impact-number" data-target="20" data-suffix="%">0</div>
-        <div class="impact-label">Search Efficiency</div>
+        <div class="impact-label" data-i18n="impact.search">Search Efficiency</div>
       </div>
     </div>
   </section>
@@ -2078,10 +2099,10 @@
   <!-- Contact -->
   <section class="contact-section" id="contact">
     <div class="reveal">
-      <div class="section-label">Contact</div>
-      <h2 class="section-title">Let's Build Something<br>Great Together</h2>
+      <div class="section-label" data-i18n="contact.label">Contact</div>
+      <h2 class="section-title" data-i18n="contact.title" data-i18n-html="true">Let's Build Something<br>Great Together</h2>
     </div>
-    <p class="contact-subtitle reveal">
+    <p class="contact-subtitle reveal" data-i18n="contact.subtitle">
       I'm currently open to new opportunities. Whether you have a project, a team, or just want to connect — I'd love to hear from you.
     </p>
     <div class="contact-buttons reveal">
@@ -2354,6 +2375,118 @@
       btn.addEventListener('mouseleave', () => {
         btn.style.transform = '';
       });
+    });
+
+    // ═══ i18n MULTI-LANGUAGE ═══
+    const i18n = {
+      en: {
+        'nav.about': 'About', 'nav.experience': 'Experience', 'nav.skills': 'Skills',
+        'nav.impact': 'Impact', 'nav.contact': 'Contact', 'nav.cta': 'Hire Me',
+        'nav.langSwitch': 'EN / ES', 'nav.themeSwitch': 'Switch Theme',
+        'hero.tag': 'Available for hire',
+        'hero.title': 'Senior Full Stack Software Engineer',
+        'hero.summary': '8+ years building high-traffic platforms for <strong>IBM</strong>, <strong>3Pillar Global</strong> &amp; <strong>Softtek</strong>. From migrating 30+ legacy components to optimizing systems serving 1M+ users — I turn complexity into clean, scalable solutions.',
+        'hero.cta': 'Get in Touch', 'hero.viewExp': 'View Experience',
+        'about.label': 'About Me', 'about.title': 'More Than Just Code',
+        'about.p1': 'I\'m a software engineer passionate about building products that make a real difference. Based in <strong>Hidalgo, Mexico</strong>, I\'ve spent 8+ years working remotely with international teams, shipping code that serves millions.',
+        'about.p2': 'At <strong>IBM</strong>, I modernized the Home Depot platform used by over a million users. At <strong>3Pillar Global</strong>, I\'m building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale.',
+        'about.p3': 'I believe in TDD, code reviews, and shipping often. I\'m comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.',
+        'about.location': 'Location', 'about.remote': 'Remote-first',
+        'about.languages': 'Languages', 'about.spanish': 'Spanish', 'about.english': 'English',
+        'about.native': 'Native', 'about.professional': 'Professional',
+        'about.education': 'Education', 'about.degree': 'B.S. Computer Systems Engineering',
+        'value.label': 'Why Hire Me', 'value.title': 'What I Bring to the Table',
+        'value.v1t': 'High-Impact Delivery', 'value.v1d': 'I\'ve built systems serving 1M+ users and managed platforms for 1,000+ enterprise clients. I ship features that move business metrics.',
+        'value.v2t': 'True Full Stack', 'value.v2d': 'From React + TypeScript frontends to Java Spring Boot microservices, databases, and CI/CD — I own the entire stack with confidence.',
+        'value.v3t': 'Team Multiplier', 'value.v3d': 'I introduce best practices — TDD, GitHub Flow, code reviews, Conventional Commits — that elevate the entire team\'s velocity.',
+        'value.v4t': 'Legacy Modernization', 'value.v4d': 'Migrated 30+ AngularJS components to React at IBM. I know how to modernize codebases without breaking production.',
+        'value.v5t': 'Quality-First Mindset', 'value.v5d': 'TDD with Jest, integration testing, high coverage — I write code that doesn\'t break at 3am. Reliability is non-negotiable.',
+        'value.v6t': 'Remote-Ready', 'value.v6d': '8+ years working with distributed teams across time zones. Async communication, documentation, and self-management are second nature.',
+        'exp.label': 'Experience', 'exp.title': 'Where I\'ve Made an Impact',
+        'skills.label': 'Technical Skills', 'skills.title': 'My Toolkit',
+        'projects.label': 'Projects', 'projects.title': 'Featured Work',
+        'projects.p1t': 'Enterprise Monitoring Dashboard', 'projects.p1d': 'Mission-critical data center management system with real-time monitoring, used by 1,000+ enterprise clients daily. Built with React, TypeScript, and Spring Boot microservices.',
+        'projects.p2t': 'Home Depot USA Platform', 'projects.p2d': 'Optimized and modernized the e-commerce platform serving 1M+ users. Migrated 30+ components from AngularJS to React and improved search efficiency by 20%.',
+        'projects.p3t': 'Video Streaming Platform', 'projects.p3d': 'Architected a complete streaming system from scratch — frontend, backend, and database. Replaced legacy PHP with modern Node.js RESTful APIs.',
+        'impact.label': 'Impact', 'impact.title': 'By the Numbers',
+        'impact.years': 'Years Experience', 'impact.users': 'Users Impacted',
+        'impact.components': 'Components Migrated', 'impact.search': 'Search Efficiency',
+        'contact.label': 'Contact', 'contact.title': 'Let\'s Build Something<br>Great Together',
+        'contact.subtitle': 'I\'m currently open to new opportunities. Whether you have a project, a team, or just want to connect — I\'d love to hear from you.',
+      },
+      es: {
+        'nav.about': 'Sobre Mi', 'nav.experience': 'Experiencia', 'nav.skills': 'Habilidades',
+        'nav.impact': 'Impacto', 'nav.contact': 'Contacto', 'nav.cta': 'Contratame',
+        'nav.langSwitch': 'ES / EN', 'nav.themeSwitch': 'Cambiar Tema',
+        'hero.tag': 'Disponible para contratacion',
+        'hero.title': 'Ingeniero Full Stack Senior',
+        'hero.summary': '8+ anos construyendo plataformas de alto trafico para <strong>IBM</strong>, <strong>3Pillar Global</strong> y <strong>Softtek</strong>. Desde migrar 30+ componentes legacy hasta optimizar sistemas que sirven a 1M+ usuarios — convierto la complejidad en soluciones limpias y escalables.',
+        'hero.cta': 'Contactame', 'hero.viewExp': 'Ver Experiencia',
+        'about.label': 'Sobre Mi', 'about.title': 'Mas Que Solo Codigo',
+        'about.p1': 'Soy un ingeniero de software apasionado por construir productos que hacen una diferencia real. Basado en <strong>Hidalgo, Mexico</strong>, he pasado 8+ anos trabajando remotamente con equipos internacionales, entregando codigo que sirve a millones.',
+        'about.p2': 'En <strong>IBM</strong>, modernize la plataforma de Home Depot utilizada por mas de un millon de usuarios. En <strong>3Pillar Global</strong>, construyo la infraestructura de la que dependen 1,000+ clientes empresariales diariamente. Traigo la misma intensidad a cada proyecto — arquitectura limpia, codigo probado y sistemas que escalan.',
+        'about.p3': 'Creo en TDD, code reviews y entregar frecuentemente. Me siento comodo liderando migraciones, disenando APIs o entrando a un codebase de React. Lo que me importa es construir cosas que funcionan — de forma confiable y a escala.',
+        'about.location': 'Ubicacion', 'about.remote': 'Trabajo remoto',
+        'about.languages': 'Idiomas', 'about.spanish': 'Espanol', 'about.english': 'Ingles',
+        'about.native': 'Nativo', 'about.professional': 'Profesional',
+        'about.education': 'Educacion', 'about.degree': 'Ing. en Sistemas Computacionales',
+        'value.label': 'Por Que Contratarme', 'value.title': 'Lo Que Aporto al Equipo',
+        'value.v1t': 'Entrega de Alto Impacto', 'value.v1d': 'He construido sistemas que sirven a 1M+ usuarios y gestionado plataformas para 1,000+ clientes empresariales. Entrego features que mueven metricas de negocio.',
+        'value.v2t': 'Full Stack Real', 'value.v2d': 'Desde frontends con React + TypeScript hasta microservicios con Java Spring Boot, bases de datos y CI/CD — domino todo el stack con confianza.',
+        'value.v3t': 'Multiplicador de Equipo', 'value.v3d': 'Introduzco mejores practicas — TDD, GitHub Flow, code reviews, Conventional Commits — que elevan la velocidad de todo el equipo.',
+        'value.v4t': 'Modernizacion Legacy', 'value.v4d': 'Migre 30+ componentes de AngularJS a React en IBM. Se como modernizar codebases sin romper produccion.',
+        'value.v5t': 'Mentalidad Quality-First', 'value.v5d': 'TDD con Jest, testing de integracion, alta cobertura — escribo codigo que no se rompe a las 3am. La confiabilidad no es negociable.',
+        'value.v6t': 'Listo para Remoto', 'value.v6d': '8+ anos trabajando con equipos distribuidos en diferentes zonas horarias. Comunicacion asincrona, documentacion y autogestion son mi segunda naturaleza.',
+        'exp.label': 'Experiencia', 'exp.title': 'Donde He Generado Impacto',
+        'skills.label': 'Habilidades Tecnicas', 'skills.title': 'Mi Stack',
+        'projects.label': 'Proyectos', 'projects.title': 'Trabajo Destacado',
+        'projects.p1t': 'Dashboard de Monitoreo Empresarial', 'projects.p1d': 'Sistema critico de gestion de centros de datos con monitoreo en tiempo real, utilizado por 1,000+ clientes empresariales diariamente. Construido con React, TypeScript y microservicios Spring Boot.',
+        'projects.p2t': 'Plataforma Home Depot USA', 'projects.p2d': 'Optimice y modernize la plataforma de e-commerce que sirve a 1M+ usuarios. Migre 30+ componentes de AngularJS a React y mejore la eficiencia de busqueda en un 20%.',
+        'projects.p3t': 'Plataforma de Streaming', 'projects.p3d': 'Arquitecte un sistema completo de streaming desde cero — frontend, backend y base de datos. Reemplace PHP legacy con APIs RESTful modernas en Node.js.',
+        'impact.label': 'Impacto', 'impact.title': 'En Numeros',
+        'impact.years': 'Anos de Experiencia', 'impact.users': 'Usuarios Impactados',
+        'impact.components': 'Componentes Migrados', 'impact.search': 'Eficiencia de Busqueda',
+        'contact.label': 'Contacto', 'contact.title': 'Construyamos Algo<br>Increible Juntos',
+        'contact.subtitle': 'Actualmente estoy abierto a nuevas oportunidades. Ya sea que tengas un proyecto, un equipo, o solo quieras conectar — me encantaria escucharte.',
+      }
+    };
+
+    let currentLang = localStorage.getItem('portfolio-lang') || 'en';
+
+    function applyLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('portfolio-lang', lang);
+      document.documentElement.lang = lang;
+
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const val = i18n[lang]?.[key];
+        if (val) {
+          if (el.dataset.i18nHtml === 'true') {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+
+      // Update lang toggle buttons
+      const langBtn = document.getElementById('langToggle');
+      if (langBtn) langBtn.textContent = lang === 'en' ? 'ES' : 'EN';
+    }
+
+    // Init language
+    applyLang(currentLang);
+
+    // Desktop toggle
+    document.getElementById('langToggle').addEventListener('click', () => {
+      applyLang(currentLang === 'en' ? 'es' : 'en');
+    });
+
+    // Mobile toggle
+    document.getElementById('mobileLangToggle')?.addEventListener('click', () => {
+      applyLang(currentLang === 'en' ? 'es' : 'en');
     });
   </script>
 </body>
