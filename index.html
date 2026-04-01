@@ -952,42 +952,66 @@
     }
     .skill-card:hover::before { opacity: 1; }
 
-    .skill-icon {
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .skill-card-icon {
       width: 40px; height: 40px;
       border-radius: 10px;
       background: var(--accent-dim);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
       border: 1px solid color-mix(in srgb, var(--accent) 12%, transparent);
+      flex-shrink: 0;
+    }
+    .skill-card-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.5;
     }
     .skill-category {
       font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 1rem;
     }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-tag {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .skill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       padding: 0.4rem 0.75rem;
       background: var(--surface);
-      color: var(--text-dim);
-      border-radius: 6px;
       border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
       transition: all 0.25s ease;
       cursor: default;
     }
-    .skill-tag:hover {
+    .skill-item:hover {
       border-color: var(--accent);
       color: var(--accent);
       background: var(--accent-dim);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px var(--accent-dim);
     }
+    .skill-item svg {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+    }
+    [data-theme="dark"] .skill-item .icon-light { display: none; }
+    [data-theme="dark"] .skill-item .icon-dark { display: block; }
+    [data-theme="light"] .skill-item .icon-light { display: block; }
+    [data-theme="light"] .skill-item .icon-dark { display: none; }
 
     /* ══════ IMPACT ══════ */
     .impact-grid {
@@ -1940,45 +1964,83 @@
     </div>
     <div class="skills-grid stagger-children">
       <div class="skill-card reveal">
-        <div class="skill-icon">⚛</div>
-        <h3 class="skill-category">Frontend</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span class="skill-tag">ES6+</span><span class="skill-tag">Redux</span><span class="skill-tag">Vue</span><span class="skill-tag">AngularJS</span><span class="skill-tag">Material UI</span><span class="skill-tag">Styled Components</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">Sass</span><span class="skill-tag">Responsive Design</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3 class="skill-category">Frontend</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#61DAFB" stroke="none"><circle cx="12" cy="12" r="2.2"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1" transform="rotate(120 12 12)"/></svg>React</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="2" fill="#3178C6"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="sans-serif">TS</text></svg>TypeScript</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="2" fill="#F7DF1E"/><text x="12" y="16" text-anchor="middle" fill="#000" font-size="10" font-weight="700" font-family="sans-serif">JS</text></svg>ES6+</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#764ABC" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/><circle cx="12" cy="12" r="2.5"/></svg>Redux</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#4FC08D" stroke="none"><path d="M12 2L2 19h4l6-10.5L18 19h4z"/></svg>Vue</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#DD0031" stroke="none"><path d="M12 2L2 6l1.5 12L12 22l8.5-4L22 6z"/><path d="M12 2v20l8.5-4L22 6z" fill="#C3002F"/><path d="M12 5.5L7 17h2l1-2.5h4L15 17h2z" fill="#fff"/><path d="M12 8l1.8 4.5H10.2z" fill="none"/></svg>Angular</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#0081CB" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c1.87 0 3.57.65 4.93 1.72L8.72 16.93C7.65 15.57 7 13.87 7 12c0-2.76 2.24-5 5-5z"/></svg>Material UI</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#E44D26" stroke="none"><path d="M4 2l1.5 17L12 22l6.5-3L20 2zm11.5 6H9l.25 2.5h6l-.5 5.5L12 17.5l-2.75-1.5-.2-2h2.5l.1 1L12 15.5l.4-.1.1-1.4H8.5L8 7.5h8z"/></svg>HTML5</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#1572B6" stroke="none"><path d="M4 2l1.5 17L12 22l6.5-3L20 2zm11 6H9.5l.2 2.5h5l-.4 5L12 17l-2.3-1.3-.15-1.7h2.3l.1.9L12 15.4l.1 0 .3-3.4H8.7L8.3 7h7.5z"/></svg>CSS3</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#CC6699" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-1.5-1.5c-.5-.5-1-1.5-1-2.5 0-2 1.5-3 3-3s2 .5 2.5 1l-1 1c-.3-.3-.7-.5-1.5-.5s-1.5.7-1.5 1.5.5 1 1 1.5l1.5 1.5z"/></svg>Sass</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-icon">⚙</div>
-        <h3 class="skill-category">Backend</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Node.js</span><span class="skill-tag">Express</span><span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">GraphQL</span><span class="skill-tag">REST</span><span class="skill-tag">SOAP</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="18" r="1"/></svg></div>
+          <h3 class="skill-category">Backend</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#339933" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-.5 15v-4.5l-2.5 4h-.5v-7h1v4.5l2.5-4h.5v7zm5-3c0 1.66-1.34 3-3 3h-1v-1h1c1.1 0 2-.9 2-2s-.9-2-2-2h-1v-1h1c1.66 0 3 1.34 3 3z"/></svg>Node.js</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M4 17l8 4 8-4M4 12l8 4 8-4M12 2l8 5-8 5-8-5z"/></svg>Express</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#f89820"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="serif">J</text></svg>Java</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#6DB33F" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 13c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm4 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>Spring Boot</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#E10098" stroke="none"><path d="M12 2L2 12l10 10 10-10zm0 4l6 6-6 6-6-6z"/></svg>GraphQL</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>REST</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>SOAP</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-icon">🗄</div>
-        <h3 class="skill-category">Databases</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">MongoDB</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">Oracle 11G</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+          <h3 class="skill-category">Databases</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#47A248" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c.83 0 1.5 2.24 1.5 5v2c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-2c0-2.76.67-5 1.5-5z"/></svg>MongoDB</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#4169E1" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.14-7-7 3.14-7 7-7z"/><circle cx="12" cy="12" r="3"/></svg>PostgreSQL</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#4479A1" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>MySQL</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#F80000" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>Oracle 11G</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-icon">🚀</div>
-        <h3 class="skill-category">DevOps & Tools</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Docker</span><span class="skill-tag">Linux</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">TeamCity</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Jira</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <h3 class="skill-category">DevOps & Tools</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#2496ED" stroke="none"><path d="M13.5 9H15v2h-1.5zm-3 0H12v2h-1.5zm-3 0H9v2H7.5zm-3 0H6v2H4.5zM3 12.5c0 2.5 2 4.5 5 5 1 .2 2 .3 3.5.3s3.5-.5 5-1.5c1.5-1 2.5-2 3-3.5.2-.5.3-1 .3-1.5h-2c0 .3 0 .7-.2 1-.5 1-1.2 2-2.5 2.7-1.3.7-2.8 1-4.6 1-2.5 0-4.5-1-5.5-2.5z"/></svg>Docker</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Linux</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="var(--text-dim)" stroke="none"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub Actions</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>CI/CD</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#0052CC" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.4-1.4L10 13.2l6.6-6.6L18 8z"/></svg>Jira</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-icon">🧪</div>
-        <h3 class="skill-category">Testing & Quality</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Jest</span><span class="skill-tag">React Testing Library</span><span class="skill-tag">TDD</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <h3 class="skill-category">Testing</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="#C21325" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 13l-4-4 1.4-1.4L10 12.2l6.6-6.6L18 7z"/></svg>Jest</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#E33332" stroke-width="1.5"><path d="M4 17l8 4 8-4M4 12l8 4 8-4M12 2l8 5-8 5-8-5z"/></svg>Testing Library</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>TDD</span>
         </div>
       </div>
       <div class="skill-card reveal">
-        <div class="skill-icon">📋</div>
-        <h3 class="skill-category">Methodologies</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Agile</span><span class="skill-tag">Scrum</span><span class="skill-tag">Code Review</span><span class="skill-tag">CI/CD Pipelines</span>
+        <div class="skill-card-header">
+          <div class="skill-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h3 class="skill-category">Methodologies</h3>
+        </div>
+        <div class="skill-items">
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Agile</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Scrum</span>
+          <span class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M16 18l2-2-2-2M8 6L6 8l2 2"/><path d="M14.5 4l-5 16"/></svg>Code Review</span>
         </div>
       </div>
     </div>
