@@ -20,7 +20,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -33,11 +33,18 @@
       --accent-glow: rgba(0,229,160,0.25);
       --accent-bright: #33ffc0;
       --warm: #ff6b35;
+      --warm-dim: rgba(255,107,53,0.1);
+      --warm-glow: rgba(255,107,53,0.25);
       --purple: #a78bfa;
+      --purple-dim: rgba(167,139,250,0.1);
+      --purple-glow: rgba(167,139,250,0.25);
       --font-display: 'Space Grotesk', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
     }
 
     [data-theme="dark"] {
@@ -66,12 +73,16 @@
       --text-secondary: #3f3f46;
       --text-dim: #52525b;
       --text-muted: #a1a1aa;
-      --accent: #059669;
-      --accent-dim: rgba(5,150,105,0.08);
-      --accent-glow: rgba(5,150,105,0.15);
-      --accent-bright: #10b981;
+      --accent: #047857;
+      --accent-dim: rgba(4,120,87,0.08);
+      --accent-glow: rgba(4,120,87,0.15);
+      --accent-bright: #059669;
       --warm: #ea580c;
+      --warm-dim: rgba(234,88,12,0.08);
+      --warm-glow: rgba(234,88,12,0.15);
       --purple: #7c3aed;
+      --purple-dim: rgba(124,58,237,0.08);
+      --purple-glow: rgba(124,58,237,0.15);
       --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
       --shadow-heavy: 0 4px 20px rgba(0,0,0,0.08);
     }
@@ -94,22 +105,98 @@
 
     ::selection { background: var(--accent); color: #0a0a0b; }
 
-    /* ══════ GRAIN ══════ */
+    /* ══════ AMBIENT BACKGROUND ══════ */
+    .bg-aurora {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .bg-orb--1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      top: -10%; right: -5%;
+      animation-duration: 22s;
+    }
+    .bg-orb--2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+      bottom: -15%; left: -8%;
+      animation-duration: 26s;
+      animation-delay: -8s;
+    }
+    .bg-orb--3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--warm) 0%, transparent 70%);
+      top: 40%; left: 50%;
+      opacity: 0.06;
+      animation-duration: 30s;
+      animation-delay: -14s;
+    }
+    .bg-orb--4 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #00b8d4 0%, transparent 70%);
+      top: 60%; right: 10%;
+      opacity: 0.08;
+      animation-duration: 24s;
+      animation-delay: -4s;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.02); }
+    }
+    /* Dot grid pattern */
+    .bg-dots {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle, color-mix(in srgb, var(--accent) 15%, transparent) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 70%);
+    }
+    /* Subtle grain overlay */
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
-      z-index: 9998;
+      z-index: 1;
+      opacity: 0.5;
     }
+    /* Gradient fade between sections */
+    section::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+      opacity: 0.4;
+      z-index: 0;
+    }
+    .contact-section::after,
+    .hero::after { display: none; }
 
     /* ══════ SCROLL PROGRESS ══════ */
     .scroll-progress {
       position: fixed;
       top: 0; left: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent), #00b8d4);
+      background: linear-gradient(90deg, var(--accent), var(--warm), var(--purple));
       z-index: 102;
       width: 0%;
     }
@@ -145,7 +232,7 @@
       width: 0%; height: 100%;
       background: var(--accent);
       border-radius: 2px;
-      animation: loaderFill 1.1s var(--ease-out) forwards;
+      animation: loaderFill 0.4s var(--ease-out) forwards;
     }
     @keyframes loaderFill { to { width: 100%; } }
 
@@ -225,9 +312,9 @@
 
     .nav-cta {
       padding: 0.5rem 1.2rem;
-      background: var(--accent);
-      color: #0a0a0b !important;
-      border-radius: 6px;
+      background: var(--warm);
+      color: #fff !important;
+      border-radius: var(--radius-sm);
       font-weight: 500;
       text-decoration: none;
       font-family: var(--font-mono);
@@ -397,7 +484,7 @@
       align-items: center;
       gap: 0.75rem;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease-out) 1.2s forwards;
+      animation: fadeUp 0.7s var(--ease-out) 0.5s forwards;
     }
     .status-dot {
       width: 8px; height: 8px;
@@ -431,7 +518,7 @@
       gap: 1.25rem;
       margin-bottom: 1.5rem;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease-out) 1.4s forwards;
+      animation: fadeUp 0.7s var(--ease-out) 0.7s forwards;
     }
     .avatar-ring {
       width: 68px; height: 68px;
@@ -465,7 +552,7 @@
     }
     .hero-name-gradient {
       display: block;
-      background: linear-gradient(135deg, var(--accent) 0%, #00b8d4 60%, var(--accent-bright) 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, #00b8d4 40%, var(--purple) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -485,7 +572,7 @@
       margin-bottom: 1.8rem;
       letter-spacing: -0.01em;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease-out) 1.55s forwards;
+      animation: fadeUp 0.7s var(--ease-out) 0.85s forwards;
     }
     .hero-summary {
       font-size: 1.1rem;
@@ -494,7 +581,7 @@
       line-height: 1.8;
       margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease-out) 1.7s forwards;
+      animation: fadeUp 0.7s var(--ease-out) 1.0s forwards;
     }
     .hero-summary strong { color: var(--text); font-weight: 600; }
 
@@ -503,7 +590,7 @@
       flex-wrap: wrap;
       gap: 0.75rem;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease-out) 1.85s forwards;
+      animation: fadeUp 0.7s var(--ease-out) 1.15s forwards;
     }
     .btn {
       display: inline-flex;
@@ -523,8 +610,8 @@
     }
     .btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
     .btn-primary {
-      background: var(--accent);
-      color: #0a0a0b;
+      background: var(--warm);
+      color: #fff;
       font-weight: 500;
       position: relative;
       overflow: hidden;
@@ -534,12 +621,12 @@
       position: absolute;
       top: 0; left: -100%;
       width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
       transition: left 0.5s ease;
     }
     .btn-primary:hover::after { left: 100%; }
     .btn-primary:hover {
-      box-shadow: 0 0 35px var(--accent-glow), 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 0 35px var(--warm-glow), 0 4px 15px rgba(0,0,0,0.2);
       transform: translateY(-2px);
     }
     .btn-outline {
@@ -574,13 +661,13 @@
     .terminal {
       background: var(--bg-elevated);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: var(--radius-lg);
       width: 100%;
       max-width: 500px;
       overflow: hidden;
       box-shadow: 0 25px 70px var(--shadow-heavy);
       opacity: 0;
-      animation: fadeUp 0.8s var(--ease-out) 1.5s forwards;
+      animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
       transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, background 0.35s, border-color 0.35s;
     }
     .terminal:hover {
@@ -771,7 +858,7 @@
     .about-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: var(--radius-md);
       padding: 1.25rem;
       transition: border-color 0.3s, background 0.35s;
     }
@@ -821,16 +908,14 @@
     .timeline-item {
       padding-left: 3rem;
       padding-bottom: 3rem;
+      padding-right: 1rem;
       position: relative;
-      border-radius: 12px;
-      transition: background 0.3s ease;
+      border-radius: var(--radius-md);
+      transition: background 0.3s ease, transform 0.3s var(--ease-out);
     }
     .timeline-item:hover {
       background: var(--accent-dim);
-      margin-left: -1rem;
-      padding-left: 4rem;
-      margin-right: -1rem;
-      padding-right: 1rem;
+      transform: translateX(4px);
     }
     .timeline-item:last-child { padding-bottom: 0; }
     .timeline-item::before {
@@ -930,7 +1015,7 @@
     .skill-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: var(--radius-md);
       padding: 1.75rem;
       position: relative;
       overflow: hidden;
@@ -1025,7 +1110,7 @@
       text-align: center;
       padding: 2.5rem 1.25rem;
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: var(--radius-md);
       background: var(--bg-card);
       transition: all 0.4s var(--ease-out);
       position: relative;
@@ -1035,13 +1120,13 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 60%);
+      background: radial-gradient(circle at 50% 0%, var(--purple-dim) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
     .impact-card:hover::before { opacity: 1; }
     .impact-card:hover {
-      border-color: var(--accent);
+      border-color: var(--purple);
       transform: translateY(-4px);
       box-shadow: 0 12px 40px var(--shadow-card);
     }
@@ -1049,7 +1134,7 @@
       font-family: var(--font-display);
       font-size: clamp(2.2rem, 3.5vw, 3rem);
       font-weight: 700;
-      background: linear-gradient(135deg, var(--accent), #00b8d4);
+      background: linear-gradient(135deg, var(--purple), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1243,11 +1328,21 @@
       background: #f0f0f2;
     }
     [data-theme="light"] .nav-cta {
-      background: var(--accent);
+      background: var(--warm);
       color: #fff !important;
     }
     [data-theme="light"] .btn-primary {
       color: #fff;
+    }
+    [data-theme="light"] .bg-orb { opacity: 0.07; filter: blur(100px); }
+    [data-theme="light"] .bg-orb--3 { opacity: 0.03; }
+    [data-theme="light"] .bg-dots {
+      opacity: 0.15;
+      background-image: radial-gradient(circle, color-mix(in srgb, var(--accent) 20%, transparent) 1px, transparent 1px);
+    }
+    [data-theme="light"] body::after { opacity: 0.2; }
+    [data-theme="light"] section::after {
+      background: linear-gradient(to bottom, transparent, var(--bg));
     }
     [data-theme="light"] .marquee-section {
       background: var(--bg);
@@ -1255,9 +1350,6 @@
     }
     [data-theme="light"] .back-to-top {
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] body::after {
-      opacity: 0.015;
     }
     [data-theme="light"] .section-alt {
       background: var(--bg-elevated);
@@ -1269,15 +1361,15 @@
     /* ══════ VALUE PROPS ══════ */
     .value-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      max-width: 1050px;
+      max-width: 900px;
       margin: 0 auto;
     }
     .value-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       padding: 2.25rem;
       transition: all 0.4s var(--ease-out);
       position: relative;
@@ -1288,7 +1380,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+      background: linear-gradient(90deg, var(--card-accent, var(--accent)), transparent);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.4s var(--ease-out);
@@ -1299,6 +1391,13 @@
       transform: translateY(-4px);
       box-shadow: 0 16px 50px var(--shadow-card);
     }
+    .value-card:nth-child(2) { --card-accent: var(--warm); }
+    .value-card:nth-child(2) .value-icon { background: var(--warm-dim); border-color: color-mix(in srgb, var(--warm) 15%, transparent); }
+    .value-card:nth-child(2) .value-icon svg { stroke: var(--warm); }
+    .value-card:nth-child(3) { --card-accent: var(--purple); }
+    .value-card:nth-child(3) .value-icon { background: var(--purple-dim); border-color: color-mix(in srgb, var(--purple) 15%, transparent); }
+    .value-card:nth-child(3) .value-icon svg { stroke: var(--purple); }
+    .value-card:nth-child(4) { --card-accent: #00b8d4; }
     .value-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
@@ -1344,7 +1443,7 @@
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       overflow: hidden;
       transition: all 0.4s var(--ease-out);
     }
@@ -1354,8 +1453,8 @@
       box-shadow: 0 16px 50px var(--shadow-card);
     }
     .project-preview {
-      height: 180px;
-      background: var(--surface);
+      height: 200px;
+      background: var(--project-bg, var(--surface));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1363,11 +1462,40 @@
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
+    .project-card:nth-child(1) .project-preview {
+      --project-bg: linear-gradient(135deg, #0f1729 0%, #0a2540 30%, #1a3a5c 60%, #0d4f6e 100%);
+      background: var(--project-bg);
+    }
+    .project-card:nth-child(1) .project-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(0,229,160,0.15), transparent 50%),
+                  radial-gradient(circle at 30% 70%, rgba(0,184,212,0.1), transparent 50%);
+    }
+    .project-card:nth-child(2) .project-preview {
+      background: linear-gradient(135deg, #1a0a00 0%, #3d1600 30%, #f96302 60%, #ff8b3d 100%);
+    }
+    .project-card:nth-child(2) .project-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(255,255,255,0.1), transparent 50%);
+    }
+    .project-card:nth-child(3) .project-preview {
+      background: linear-gradient(135deg, #0a1628 0%, #0e2a4a 30%, #1a6b6a 60%, #2dd4bf 100%);
+    }
+    .project-card:nth-child(3) .project-preview::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 40% 60%, rgba(167,139,250,0.1), transparent 50%);
+    }
     .project-preview::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 50%, rgba(0,180,212,0.05) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
       opacity: 0;
       transition: opacity 0.5s ease;
     }
@@ -1382,19 +1510,24 @@
     }
     .project-card:hover .project-preview-icon { transform: scale(1.08); }
     .project-preview-icon svg {
-      width: 40px; height: 40px;
-      stroke: var(--accent);
+      width: 44px; height: 44px;
+      stroke: rgba(255,255,255,0.8);
       fill: none;
       stroke-width: 1.2;
-      opacity: 0.6;
-      transition: opacity 0.3s;
+      transition: all 0.4s var(--ease-out);
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
     }
-    .project-card:hover .project-preview-icon svg { opacity: 1; }
+    .project-card:hover .project-preview-icon svg {
+      stroke: #fff;
+      transform: scale(1.1);
+    }
     .project-preview-icon span {
       font-family: var(--font-mono);
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
     .project-body {
       padding: 1.75rem;
@@ -1628,6 +1761,88 @@
       100% { transform: scale(1.3); opacity: 0; }
     }
 
+    /* ══════ FOCUS VISIBLE ══════ */
+    .nav-links a:focus-visible,
+    .btn:focus-visible,
+    .social-btn:focus-visible,
+    .theme-btn:focus-visible,
+    .lang-btn:focus-visible,
+    .nav-cta:focus-visible,
+    .back-to-top:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ══════ REDUCED MOTION ══════ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .stagger-children > * { opacity: 1; transform: none; }
+      .cursor-trail, .particles { display: none !important; }
+      .bg-orb { animation: none !important; }
+    }
+
+    /* ══════ REVEAL VARIATIONS ══════ */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.7s var(--ease-out);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.7s var(--ease-out);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.7s var(--ease-out);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* ══════ COMPANY LOGOS STRIP ══════ */
+    .companies-section {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elevated);
+      transition: background 0.35s, border-color 0.35s;
+    }
+    .companies-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 0 2rem;
+    }
+    .companies-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .company-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+      letter-spacing: -0.01em;
+      opacity: 0.6;
+    }
+    .company-logo:hover { color: var(--text); opacity: 1; }
+
     /* ══════ SCROLLBAR ══════ */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -1666,6 +1881,15 @@
     <div class="loader-bar"><span></span></div>
   </div>
 
+  <!-- Ambient Background -->
+  <div class="bg-aurora">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+    <div class="bg-orb bg-orb--4"></div>
+  </div>
+  <div class="bg-dots"></div>
+
   <!-- Particles -->
   <div class="particles" id="particles"></div>
 
@@ -1683,6 +1907,7 @@
       <ul class="nav-links">
         <li><a href="#about" data-section="about" data-i18n="nav.about">About</a></li>
         <li><a href="#experience" data-section="experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects" data-section="projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#skills" data-section="skills" data-i18n="nav.skills">Skills</a></li>
         <li><a href="#impact" data-section="impact" data-i18n="nav.impact">Impact</a></li>
       </ul>
@@ -1703,6 +1928,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMobile()" data-i18n="nav.about">About</a>
     <a href="#experience" onclick="closeMobile()" data-i18n="nav.experience">Experience</a>
+    <a href="#projects" onclick="closeMobile()" data-i18n="nav.projects">Projects</a>
     <a href="#skills" onclick="closeMobile()" data-i18n="nav.skills">Skills</a>
     <a href="#impact" onclick="closeMobile()" data-i18n="nav.impact">Impact</a>
     <a href="#contact" onclick="closeMobile()" data-i18n="nav.contact">Contact</a>
@@ -1744,10 +1970,9 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
           <span data-i18n="hero.cta">Get in Touch</span>
         </a>
-        <a href="#experience" class="btn btn-outline" data-i18n="hero.viewExp">View Experience</a>
-        <a href="./Cesar_Canales_Resume.pdf" download class="btn btn-ghost">
+        <a href="./Cesar_Canales_Resume.pdf" download class="btn btn-outline">
           <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          CV
+          <span data-i18n="hero.downloadCV">Download CV</span>
         </a>
       </div>
     </div>
@@ -1764,11 +1989,14 @@
     </div>
   </section>
 
-  <!-- Marquee -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <span class="marquee-item">React</span><span class="marquee-item">TypeScript</span><span class="marquee-item">Node.js</span><span class="marquee-item">Java</span><span class="marquee-item">Spring Boot</span><span class="marquee-item">GraphQL</span><span class="marquee-item">Redux</span><span class="marquee-item">MongoDB</span><span class="marquee-item">PostgreSQL</span><span class="marquee-item">Docker</span><span class="marquee-item">CI/CD</span><span class="marquee-item">TDD</span>
-      <span class="marquee-item">React</span><span class="marquee-item">TypeScript</span><span class="marquee-item">Node.js</span><span class="marquee-item">Java</span><span class="marquee-item">Spring Boot</span><span class="marquee-item">GraphQL</span><span class="marquee-item">Redux</span><span class="marquee-item">MongoDB</span><span class="marquee-item">PostgreSQL</span><span class="marquee-item">Docker</span><span class="marquee-item">CI/CD</span><span class="marquee-item">TDD</span>
+  <!-- Trusted By -->
+  <div class="companies-section">
+    <div class="companies-inner">
+      <span class="companies-label" data-i18n="companies.label">Trusted by</span>
+      <span class="company-logo">3Pillar Global</span>
+      <span class="company-logo">IBM</span>
+      <span class="company-logo">Softtek</span>
+      <span class="company-logo">Global Hitss</span>
     </div>
   </div>
 
@@ -1776,15 +2004,15 @@
   <section id="about">
     <div class="reveal">
       <div class="section-label" data-i18n="about.label">About Me</div>
-      <h2 class="section-title" data-i18n="about.title">More Than Just Code</h2>
+      <h2 class="section-title" data-i18n="about.title">About Me</h2>
     </div>
     <div class="about-grid">
-      <div class="about-text reveal">
+      <div class="about-text reveal-left">
         <p data-i18n="about.p1" data-i18n-html="true">I'm a software engineer passionate about building products that make a real difference. Based in <strong>Hidalgo, Mexico</strong>, I've spent 8+ years working remotely with international teams, shipping code that serves millions.</p>
         <p data-i18n="about.p2" data-i18n-html="true">At <strong>IBM</strong>, I modernized the Home Depot platform used by over a million users. At <strong>3Pillar Global</strong>, I'm building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale.</p>
         <p data-i18n="about.p3">I believe in TDD, code reviews, and shipping often. I'm comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.</p>
       </div>
-      <div class="about-cards reveal">
+      <div class="about-cards reveal-right">
         <div class="about-card">
           <div class="about-card-label" data-i18n="about.location">Location</div>
           <div class="about-card-value">Hidalgo, Mexico</div>
@@ -1816,7 +2044,7 @@
   <section class="section-alt" id="value">
     <div class="reveal">
       <div class="section-label" data-i18n="value.label">Why Hire Me</div>
-      <h2 class="section-title" data-i18n="value.title">What I Bring to the Table</h2>
+      <h2 class="section-title" data-i18n="value.title">Why Teams Hire Me Back</h2>
     </div>
     <div class="value-grid stagger-children">
       <div class="value-card reveal tilt-card card-spotlight">
@@ -1850,22 +2078,6 @@
         </div>
         <h3 class="value-title" data-i18n="value.v4t">Legacy Modernization</h3>
         <p class="value-desc" data-i18n="value.v4d">Migrated 30+ AngularJS components to React at IBM. I know how to modernize codebases without breaking production.</p>
-      </div>
-      <div class="value-card reveal tilt-card card-spotlight">
-        <div class="spotlight"></div>
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="value-title" data-i18n="value.v5t">Quality-First Mindset</h3>
-        <p class="value-desc" data-i18n="value.v5d">TDD with Jest, integration testing, high coverage — I write code that doesn't break at 3am. Reliability is non-negotiable.</p>
-      </div>
-      <div class="value-card reveal tilt-card card-spotlight">
-        <div class="spotlight"></div>
-        <div class="value-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
-        <h3 class="value-title" data-i18n="value.v6t">Remote-Ready</h3>
-        <p class="value-desc" data-i18n="value.v6d">8+ years working with distributed teams across time zones. Async communication, documentation, and self-management are second nature.</p>
       </div>
     </div>
   </section>
@@ -1960,7 +2172,7 @@
   <section class="section-alt" id="skills">
     <div class="reveal">
       <div class="section-label" data-i18n="skills.label">Technical Skills</div>
-      <h2 class="section-title" data-i18n="skills.title">My Toolkit</h2>
+      <h2 class="section-title" data-i18n="skills.title">What I Work With</h2>
     </div>
     <div class="skills-grid stagger-children">
       <div class="skill-card reveal">
@@ -2134,7 +2346,7 @@
   <section id="impact">
     <div class="reveal">
       <div class="section-label" data-i18n="impact.label">Impact</div>
-      <h2 class="section-title" data-i18n="impact.title">By the Numbers</h2>
+      <h2 class="section-title" data-i18n="impact.title">8 Years. 1M+ Users. Real Results.</h2>
     </div>
     <div class="impact-grid">
       <div class="impact-card reveal">
@@ -2190,7 +2402,7 @@
   <!-- Footer -->
   <div class="footer-wrap">
   <footer>
-    <span>&copy; 2026 Cesar Canales</span>
+    <span>&copy; 2026 Cesar Canales &middot; Built with HTML, CSS &amp; too much coffee</span>
     <div class="footer-links">
       <a href="https://linkedin.com/in/cesar-canales-ab8b5279/" target="_blank">LinkedIn</a>
       <a href="https://github.com/ccanales123" target="_blank">GitHub</a>
@@ -2219,7 +2431,7 @@
 
     // ═══ LOADER ═══
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('done'), 1100);
+      setTimeout(() => document.getElementById('loader').classList.add('done'), 400);
     });
 
     // ═══ SCROLL PROGRESS ═══
@@ -2281,7 +2493,7 @@
 
     (function typeTerminal() {
       const body = document.getElementById('terminalBody');
-      let delay = 1800;
+      let delay = 1100;
       termLines.forEach((line, i) => {
         setTimeout(() => {
           const wrap = document.createElement('div');
@@ -2320,7 +2532,7 @@
         if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach((el, i) => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el, i) => {
       el.style.transitionDelay = Math.min(i % 5, 3) * 0.07 + 's';
       revealObs.observe(el);
     });
@@ -2375,7 +2587,8 @@
     }, { passive: true });
 
     // ═══ FLOATING PARTICLES ═══
-    (function createParticles() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) (function createParticles() {
       const container = document.getElementById('particles');
       for (let i = 0; i < 20; i++) {
         const p = document.createElement('div');
@@ -2392,7 +2605,7 @@
     const trail = document.getElementById('cursorTrail');
     let trailX = 0, trailY = 0, trailVisible = false;
     const isMobile = window.matchMedia('(max-width: 900px)').matches;
-    if (!isMobile) {
+    if (!isMobile && !prefersReducedMotion) {
       document.addEventListener('mousemove', (e) => {
         if (!trailVisible) { trail.style.opacity = '0.4'; trailVisible = true; }
         trailX = e.clientX;
@@ -2442,14 +2655,15 @@
     // ═══ i18n MULTI-LANGUAGE ═══
     const i18n = {
       en: {
-        'nav.about': 'About', 'nav.experience': 'Experience', 'nav.skills': 'Skills',
+        'nav.about': 'About', 'nav.experience': 'Experience', 'nav.projects': 'Projects', 'nav.skills': 'Skills',
         'nav.impact': 'Impact', 'nav.contact': 'Contact', 'nav.cta': 'Hire Me',
         'nav.langSwitch': 'EN / ES', 'nav.themeSwitch': 'Switch Theme',
         'hero.tag': 'Available for hire',
         'hero.title': 'Senior Full Stack Software Engineer',
         'hero.summary': '8+ years building high-traffic platforms for <strong>IBM</strong>, <strong>3Pillar Global</strong> &amp; <strong>Softtek</strong>. From migrating 30+ legacy components to optimizing systems serving 1M+ users — I turn complexity into clean, scalable solutions.',
-        'hero.cta': 'Get in Touch', 'hero.viewExp': 'View Experience',
-        'about.label': 'About Me', 'about.title': 'More Than Just Code',
+        'hero.cta': 'Get in Touch', 'hero.downloadCV': 'Download CV',
+        'companies.label': 'Trusted by',
+        'about.label': 'About Me', 'about.title': 'About Me',
         'about.p1': 'I\'m a software engineer passionate about building products that make a real difference. Based in <strong>Hidalgo, Mexico</strong>, I\'ve spent 8+ years working remotely with international teams, shipping code that serves millions.',
         'about.p2': 'At <strong>IBM</strong>, I modernized the Home Depot platform used by over a million users. At <strong>3Pillar Global</strong>, I\'m building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale.',
         'about.p3': 'I believe in TDD, code reviews, and shipping often. I\'m comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.',
@@ -2457,7 +2671,7 @@
         'about.languages': 'Languages', 'about.spanish': 'Spanish', 'about.english': 'English',
         'about.native': 'Native', 'about.professional': 'Professional',
         'about.education': 'Education', 'about.degree': 'B.S. Computer Systems Engineering',
-        'value.label': 'Why Hire Me', 'value.title': 'What I Bring to the Table',
+        'value.label': 'Why Hire Me', 'value.title': 'Why Teams Hire Me Back',
         'value.v1t': 'High-Impact Delivery', 'value.v1d': 'I\'ve built systems serving 1M+ users and managed platforms for 1,000+ enterprise clients. I ship features that move business metrics.',
         'value.v2t': 'True Full Stack', 'value.v2d': 'From React + TypeScript frontends to Java Spring Boot microservices, databases, and CI/CD — I own the entire stack with confidence.',
         'value.v3t': 'Team Multiplier', 'value.v3d': 'I introduce best practices — TDD, GitHub Flow, code reviews, Conventional Commits — that elevate the entire team\'s velocity.',
@@ -2465,12 +2679,12 @@
         'value.v5t': 'Quality-First Mindset', 'value.v5d': 'TDD with Jest, integration testing, high coverage — I write code that doesn\'t break at 3am. Reliability is non-negotiable.',
         'value.v6t': 'Remote-Ready', 'value.v6d': '8+ years working with distributed teams across time zones. Async communication, documentation, and self-management are second nature.',
         'exp.label': 'Experience', 'exp.title': 'Where I\'ve Made an Impact',
-        'skills.label': 'Technical Skills', 'skills.title': 'My Toolkit',
+        'skills.label': 'Technical Skills', 'skills.title': 'What I Work With',
         'projects.label': 'Projects', 'projects.title': 'Featured Work',
         'projects.p1t': 'Enterprise Monitoring Dashboard', 'projects.p1d': 'Mission-critical data center management system with real-time monitoring, used by 1,000+ enterprise clients daily. Built with React, TypeScript, and Spring Boot microservices.',
         'projects.p2t': 'Home Depot USA Platform', 'projects.p2d': 'Optimized and modernized the e-commerce platform serving 1M+ users. Migrated 30+ components from AngularJS to React and improved search efficiency by 20%.',
         'projects.p3t': 'Video Streaming Platform', 'projects.p3d': 'Architected a complete streaming system from scratch — frontend, backend, and database. Replaced legacy PHP with modern Node.js RESTful APIs.',
-        'impact.label': 'Impact', 'impact.title': 'By the Numbers',
+        'impact.label': 'Impact', 'impact.title': '8 Years. 1M+ Users. Real Results.',
         'impact.years': 'Years Experience', 'impact.users': 'Users Impacted',
         'impact.components': 'Components Migrated', 'impact.search': 'Search Efficiency',
         'contact.label': 'Contact', 'contact.title': 'Let\'s Build Something<br>Great Together',
@@ -2485,14 +2699,15 @@
         'exp.gh.bullets': '<li>Developed telecom provisioning systems with Java (Spring), REST APIs, SOAP &amp; Oracle 11G</li><li>Performed Oracle 11G database migrations ensuring integrity and high availability</li><li>Created Shell Script automation to optimize deployment workflows</li><li>Built internal interfaces with AngularJS and HTML5 for critical systems</li>',
       },
       es: {
-        'nav.about': 'Sobre Mi', 'nav.experience': 'Experiencia', 'nav.skills': 'Habilidades',
+        'nav.about': 'Sobre Mi', 'nav.experience': 'Experiencia', 'nav.projects': 'Proyectos', 'nav.skills': 'Habilidades',
         'nav.impact': 'Impacto', 'nav.contact': 'Contacto', 'nav.cta': 'Contratame',
         'nav.langSwitch': 'ES / EN', 'nav.themeSwitch': 'Cambiar Tema',
         'hero.tag': 'Disponible para contratacion',
         'hero.title': 'Ingeniero Full Stack Senior',
         'hero.summary': '8+ anos construyendo plataformas de alto trafico para <strong>IBM</strong>, <strong>3Pillar Global</strong> y <strong>Softtek</strong>. Desde migrar 30+ componentes legacy hasta optimizar sistemas que sirven a 1M+ usuarios — convierto la complejidad en soluciones limpias y escalables.',
-        'hero.cta': 'Contactame', 'hero.viewExp': 'Ver Experiencia',
-        'about.label': 'Sobre Mi', 'about.title': 'Mas Que Solo Codigo',
+        'hero.cta': 'Contactame', 'hero.downloadCV': 'Descargar CV',
+        'companies.label': 'Han confiado en mi',
+        'about.label': 'Sobre Mi', 'about.title': 'Sobre Mi',
         'about.p1': 'Soy un ingeniero de software apasionado por construir productos que hacen una diferencia real. Basado en <strong>Hidalgo, Mexico</strong>, he pasado 8+ anos trabajando remotamente con equipos internacionales, entregando codigo que sirve a millones.',
         'about.p2': 'En <strong>IBM</strong>, modernize la plataforma de Home Depot utilizada por mas de un millon de usuarios. En <strong>3Pillar Global</strong>, construyo la infraestructura de la que dependen 1,000+ clientes empresariales diariamente. Traigo la misma intensidad a cada proyecto — arquitectura limpia, codigo probado y sistemas que escalan.',
         'about.p3': 'Creo en TDD, code reviews y entregar frecuentemente. Me siento comodo liderando migraciones, disenando APIs o entrando a un codebase de React. Lo que me importa es construir cosas que funcionan — de forma confiable y a escala.',
@@ -2500,7 +2715,7 @@
         'about.languages': 'Idiomas', 'about.spanish': 'Espanol', 'about.english': 'Ingles',
         'about.native': 'Nativo', 'about.professional': 'Profesional',
         'about.education': 'Educacion', 'about.degree': 'Ing. en Sistemas Computacionales',
-        'value.label': 'Por Que Contratarme', 'value.title': 'Lo Que Aporto al Equipo',
+        'value.label': 'Por Que Contratarme', 'value.title': 'Por Que Los Equipos Me Recontratan',
         'value.v1t': 'Entrega de Alto Impacto', 'value.v1d': 'He construido sistemas que sirven a 1M+ usuarios y gestionado plataformas para 1,000+ clientes empresariales. Entrego features que mueven metricas de negocio.',
         'value.v2t': 'Full Stack Real', 'value.v2d': 'Desde frontends con React + TypeScript hasta microservicios con Java Spring Boot, bases de datos y CI/CD — domino todo el stack con confianza.',
         'value.v3t': 'Multiplicador de Equipo', 'value.v3d': 'Introduzco mejores practicas — TDD, GitHub Flow, code reviews, Conventional Commits — que elevan la velocidad de todo el equipo.',
@@ -2508,12 +2723,12 @@
         'value.v5t': 'Mentalidad Quality-First', 'value.v5d': 'TDD con Jest, testing de integracion, alta cobertura — escribo codigo que no se rompe a las 3am. La confiabilidad no es negociable.',
         'value.v6t': 'Listo para Remoto', 'value.v6d': '8+ anos trabajando con equipos distribuidos en diferentes zonas horarias. Comunicacion asincrona, documentacion y autogestion son mi segunda naturaleza.',
         'exp.label': 'Experiencia', 'exp.title': 'Donde He Generado Impacto',
-        'skills.label': 'Habilidades Tecnicas', 'skills.title': 'Mi Stack',
+        'skills.label': 'Habilidades Tecnicas', 'skills.title': 'Con Que Trabajo',
         'projects.label': 'Proyectos', 'projects.title': 'Trabajo Destacado',
         'projects.p1t': 'Dashboard de Monitoreo Empresarial', 'projects.p1d': 'Sistema critico de gestion de centros de datos con monitoreo en tiempo real, utilizado por 1,000+ clientes empresariales diariamente. Construido con React, TypeScript y microservicios Spring Boot.',
         'projects.p2t': 'Plataforma Home Depot USA', 'projects.p2d': 'Optimice y modernize la plataforma de e-commerce que sirve a 1M+ usuarios. Migre 30+ componentes de AngularJS a React y mejore la eficiencia de busqueda en un 20%.',
         'projects.p3t': 'Plataforma de Streaming', 'projects.p3d': 'Arquitecte un sistema completo de streaming desde cero — frontend, backend y base de datos. Reemplace PHP legacy con APIs RESTful modernas en Node.js.',
-        'impact.label': 'Impacto', 'impact.title': 'En Numeros',
+        'impact.label': 'Impacto', 'impact.title': '8 Anos. 1M+ Usuarios. Resultados Reales.',
         'impact.years': 'Anos de Experiencia', 'impact.users': 'Usuarios Impactados',
         'impact.components': 'Componentes Migrados', 'impact.search': 'Eficiencia de Busqueda',
         'contact.label': 'Contacto', 'contact.title': 'Construyamos Algo<br>Increible Juntos',
