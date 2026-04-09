@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cesar Canales — Senior Full Stack Engineer</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%2300e5a0' stroke-width='1.5' opacity='0.3'/%3E%3Ctext x='32' y='42' font-family='system-ui,sans-serif' font-size='28' font-weight='700' fill='%2300e5a0' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
-  <meta name="description" content="Senior Full Stack Software Engineer with 8+ years of experience. React, TypeScript, Node.js, Java, Spring Boot.">
+  <meta name="description" content="Senior Full Stack Engineer with 8+ years building high-traffic platforms for IBM, 3Pillar Global & enterprise clients. React, TypeScript, Node.js, Java, Spring Boot. Open to new opportunities.">
+  <link rel="canonical" href="https://cesarcanales.dev/">
 
   <!-- Open Graph / Social Preview -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
   <meta property="og:title" content="Cesar Canales — Senior Full Stack Engineer">
   <meta property="og:description" content="8+ years building high-traffic platforms for IBM, 3Pillar Global & Softtek. React, TypeScript, Node.js, Java, Spring Boot.">
-  <meta property="og:image" content="https://ccanales123.github.io/portfolio/og-image.png">
-  <meta property="og:url" content="https://ccanales123.github.io/portfolio/">
+  <meta property="og:image" content="https://cesarcanales.dev/og-image.png">
+  <meta property="og:url" content="https://cesarcanales.dev/">
+  <meta property="og:site_name" content="Cesar Canales">
+  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cesar Canales — Senior Full Stack Engineer">
-  <meta name="twitter:description" content="8+ years building high-traffic platforms. React, TypeScript, Node.js, Java.">
-  <meta name="twitter:image" content="https://ccanales123.github.io/portfolio/og-image.png">
+  <meta name="twitter:description" content="8+ years building high-traffic platforms for IBM, 3Pillar Global & Softtek. React, TypeScript, Node.js, Java, Spring Boot.">
+  <meta name="twitter:image" content="https://cesarcanales.dev/og-image.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1872,6 +1875,65 @@
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
   </style>
+
+  <!-- Structured Data / Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://cesarcanales.dev/#person",
+        "name": "Cesar Canales",
+        "url": "https://cesarcanales.dev",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://cesarcanales.dev/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "jobTitle": "Senior Full Stack Software Engineer",
+        "description": "Senior Full Stack Software Engineer with 8+ years of experience building high-traffic platforms for IBM, 3Pillar Global, and Softtek.",
+        "telephone": "+52-812-942-9554",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hidalgo",
+          "addressCountry": "MX"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad Politecnica de Queretaro"
+        },
+        "knowsAbout": [
+          "React", "TypeScript", "Node.js", "Java", "Spring Boot",
+          "Redux", "GraphQL", "MySQL", "PostgreSQL", "MongoDB",
+          "Docker", "Azure", "AWS", "CI/CD", "Agile", "Scrum", "TDD"
+        ],
+        "sameAs": [
+          "https://linkedin.com/in/cesar-canales-ab8b5279/",
+          "https://github.com/ccanales123"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cesarcanales.dev/#website",
+        "name": "Cesar Canales — Portfolio",
+        "url": "https://cesarcanales.dev",
+        "description": "Senior Full Stack Software Engineer portfolio",
+        "author": { "@id": "https://cesarcanales.dev/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://cesarcanales.dev/#profilepage",
+        "url": "https://cesarcanales.dev/",
+        "name": "Cesar Canales — Senior Full Stack Engineer",
+        "isPartOf": { "@id": "https://cesarcanales.dev/#website" },
+        "about": { "@id": "https://cesarcanales.dev/#person" },
+        "dateModified": "2026-04-08T00:00:00Z"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -2431,7 +2493,7 @@
 
     // ═══ LOADER ═══
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('done'), 400);
+      document.getElementById('loader').classList.add('done');
     });
 
     // ═══ SCROLL PROGRESS ═══

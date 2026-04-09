@@ -1,0 +1,440 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]: cesar.canales
+  - navigation [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: cesar.canales
+      - generic [ref=e9]:
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link "About" [ref=e12] [cursor=pointer]:
+              - /url: "#about"
+          - listitem [ref=e13]:
+            - link "Experience" [ref=e14] [cursor=pointer]:
+              - /url: "#experience"
+          - listitem [ref=e15]:
+            - link "Projects" [ref=e16] [cursor=pointer]:
+              - /url: "#projects"
+          - listitem [ref=e17]:
+            - link "Skills" [ref=e18] [cursor=pointer]:
+              - /url: "#skills"
+          - listitem [ref=e19]:
+            - link "Impact" [ref=e20] [cursor=pointer]:
+              - /url: "#impact"
+        - button "Toggle language" [ref=e21] [cursor=pointer]: ES
+        - button "Toggle theme" [ref=e22] [cursor=pointer]:
+          - img [ref=e23]
+        - link "Hire Me" [ref=e25] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e26]:
+    - generic [ref=e28]:
+      - generic [ref=e31]: Available for hire
+      - generic [ref=e32]:
+        - generic [ref=e34]: CC
+        - heading "Cesar Canales" [level=1] [ref=e35]:
+          - text: Cesar
+          - generic [ref=e36]: Canales
+      - paragraph [ref=e37]: Senior Full Stack Software Engineer
+      - paragraph [ref=e38]:
+        - text: 8+ years building high-traffic platforms for
+        - strong [ref=e39]: IBM
+        - text: ","
+        - strong [ref=e40]: 3Pillar Global
+        - text: "&"
+        - strong [ref=e41]: Softtek
+        - text: . From migrating 30+ legacy components to optimizing systems serving 1M+ users — I turn complexity into clean, scalable solutions.
+      - generic [ref=e42]:
+        - link "Get in Touch" [ref=e43] [cursor=pointer]:
+          - /url: mailto:cesar.canales123@gmail.com
+          - img [ref=e44]
+          - generic [ref=e47]: Get in Touch
+        - link "Download CV" [ref=e48] [cursor=pointer]:
+          - /url: ./Cesar_Canales_Resume.pdf
+          - img [ref=e49]
+          - generic [ref=e51]: Download CV
+    - generic [ref=e58]: cesar@dev ~ /about
+  - generic [ref=e61]:
+    - generic [ref=e62]: Trusted by
+    - generic [ref=e63]: 3Pillar Global
+    - generic [ref=e64]: IBM
+    - generic [ref=e65]: Softtek
+    - generic [ref=e66]: Global Hitss
+  - generic [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e69]: About Me
+      - heading "About Me" [level=2] [ref=e70]
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - paragraph [ref=e73]:
+          - text: I'm a software engineer passionate about building products that make a real difference. Based in
+          - strong [ref=e74]: Hidalgo, Mexico
+          - text: ", I've spent 8+ years working remotely with international teams, shipping code that serves millions."
+        - paragraph [ref=e75]:
+          - text: At
+          - strong [ref=e76]: IBM
+          - text: ", I modernized the Home Depot platform used by over a million users. At"
+          - strong [ref=e77]: 3Pillar Global
+          - text: ", I'm building infrastructure that 1,000+ enterprise clients depend on daily. I bring the same intensity to every project — clean architecture, tested code, and systems that scale."
+        - paragraph [ref=e78]: I believe in TDD, code reviews, and shipping often. I'm comfortable leading migrations, designing APIs, or jumping into a React codebase. What matters to me is building things that work — reliably and at scale.
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]: Location
+          - generic [ref=e82]: Hidalgo, Mexico
+          - generic [ref=e83]: Remote-first
+        - generic [ref=e84]:
+          - generic [ref=e85]: Languages
+          - generic [ref=e86]:
+            - generic [ref=e87]: Spanish
+            - generic [ref=e88]: Native
+          - generic [ref=e89]:
+            - generic [ref=e90]: English
+            - generic [ref=e91]: Professional
+        - generic [ref=e92]:
+          - generic [ref=e93]: Education
+          - generic [ref=e94]: B.S. Computer Systems Engineering
+          - generic [ref=e95]: Univ. Politecnica de Queretaro
+  - generic [ref=e97]:
+    - generic [ref=e98]:
+      - generic [ref=e99]: Why Hire Me
+      - heading "Why Teams Hire Me Back" [level=2] [ref=e100]
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - img [ref=e104]
+        - heading "High-Impact Delivery" [level=3] [ref=e106]
+        - paragraph [ref=e107]: I've built systems serving 1M+ users and managed platforms for 1,000+ enterprise clients. I ship features that move business metrics.
+      - generic [ref=e108]:
+        - img [ref=e110]
+        - heading "True Full Stack" [level=3] [ref=e113]
+        - paragraph [ref=e114]: From React + TypeScript frontends to Java Spring Boot microservices, databases, and CI/CD — I own the entire stack with confidence.
+      - generic [ref=e115]:
+        - img [ref=e117]
+        - heading "Team Multiplier" [level=3] [ref=e121]
+        - paragraph [ref=e122]: I introduce best practices — TDD, GitHub Flow, code reviews, Conventional Commits — that elevate the entire team's velocity.
+      - generic [ref=e123]:
+        - img [ref=e125]
+        - heading "Legacy Modernization" [level=3] [ref=e128]
+        - paragraph [ref=e129]: Migrated 30+ AngularJS components to React at IBM. I know how to modernize codebases without breaking production.
+  - generic [ref=e131]:
+    - generic [ref=e132]:
+      - generic [ref=e133]: Experience
+      - heading "Where I've Made an Impact" [level=2] [ref=e134]
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - generic [ref=e137]: Jun 2023 — Present
+        - generic [ref=e138]:
+          - heading "3Pillar Global" [level=3] [ref=e139]
+          - generic [ref=e140]: Remote
+        - paragraph [ref=e141]: Senior Full Stack Software Engineer
+        - list [ref=e142]:
+          - listitem [ref=e143]: ▹ Built mission-critical data center management system used by 1,000+ enterprise clients
+          - listitem [ref=e144]: ▹ Built reusable UI components leveraging React Hooks (useState, useEffect, useCallback, useMemo) to optimize rendering and side-effect management
+          - listitem [ref=e145]: ▹ Architected global state management with Redux & Context API for real-time monitoring dashboards
+          - listitem [ref=e146]: ▹ Designed reusable component library and internal design system with Material UI
+          - listitem [ref=e147]: ▹ Led backend architecture with Java 11, Spring Boot, Spring Security & Azure AD OAuth2
+          - listitem [ref=e148]: ▹ Implemented observability with Prometheus and Micrometer for real-time metrics
+          - listitem [ref=e149]: ▹ Managed database migrations with Flyway and MySQL; optimized with EhCache & Quartz Scheduler
+        - generic [ref=e150]:
+          - generic [ref=e151]: React
+          - generic [ref=e152]: TypeScript
+          - generic [ref=e153]: Redux
+          - generic [ref=e154]: Material UI
+          - generic [ref=e155]: Vite
+          - generic [ref=e156]: Spring Boot
+          - generic [ref=e157]: Java 11
+          - generic [ref=e158]: Azure AD
+          - generic [ref=e159]: MySQL
+      - generic [ref=e160]:
+        - generic [ref=e161]: May 2022 — Jun 2023
+        - generic [ref=e162]:
+          - heading "IBM" [level=3] [ref=e163]
+          - generic [ref=e164]: Remote
+        - paragraph [ref=e165]: Senior Full Stack Software Engineer
+        - list [ref=e166]:
+          - listitem [ref=e167]: ▹ Optimized features for Home Depot USA platform, impacting over 1,000,000 users
+          - listitem [ref=e168]: ▹ Migrated 30+ critical components from AngularJS to React + Redux
+          - listitem [ref=e169]: ▹ Improved product search efficiency by 20% through GraphQL query optimization
+          - listitem [ref=e170]: ▹ Introduced GitHub Flow, Conventional Commits, and PR workflows; led code reviews to enforce quality standards
+          - listitem [ref=e171]: ▹ Maintained high test coverage with Jest and Testing Library for stable deployments
+        - generic [ref=e172]:
+          - generic [ref=e173]: React
+          - generic [ref=e174]: Redux
+          - generic [ref=e175]: GraphQL
+          - generic [ref=e176]: Jest
+          - generic [ref=e177]: Testing Library
+      - generic [ref=e178]:
+        - generic [ref=e179]: Dec 2018 — May 2022
+        - generic [ref=e180]:
+          - heading "Softtek" [level=3] [ref=e181]
+          - generic [ref=e182]: Monterrey, Mexico
+        - paragraph [ref=e183]: Full Stack Software Engineer
+        - list [ref=e184]:
+          - listitem [ref=e185]: ▹ Architected streaming system from scratch with React (Redux), Node.js (Express) & MongoDB
+          - listitem [ref=e186]: ▹ Refactored legacy PHP into RESTful APIs using Node.js, reducing technical debt
+          - listitem [ref=e187]: ▹ Managed MongoDB databases including security, indexing & data migration
+          - listitem [ref=e188]: ▹ Configured and maintained Linux servers across dev and production environments
+        - generic [ref=e189]:
+          - generic [ref=e190]: React
+          - generic [ref=e191]: Node.js
+          - generic [ref=e192]: Express
+          - generic [ref=e193]: MongoDB
+          - generic [ref=e194]: Redux
+          - generic [ref=e195]: Linux
+      - generic [ref=e196]:
+        - generic [ref=e197]: Jan 2018 — Dec 2018
+        - generic [ref=e198]:
+          - heading "Global Hitss" [level=3] [ref=e199]
+          - generic [ref=e200]: Queretaro, Mexico
+        - paragraph [ref=e201]: Full Stack Software Engineer
+        - list [ref=e202]:
+          - listitem [ref=e203]: ▹ Developed telecom provisioning systems with Java (Spring), REST APIs, SOAP & Oracle 11G
+          - listitem [ref=e204]: ▹ Performed Oracle 11G database migrations ensuring integrity and high availability
+          - listitem [ref=e205]: ▹ Created Shell Script automation to optimize deployment workflows
+          - listitem [ref=e206]: ▹ Built internal interfaces with AngularJS and HTML5 for critical systems
+        - generic [ref=e207]:
+          - generic [ref=e208]: Java
+          - generic [ref=e209]: Spring
+          - generic [ref=e210]: Oracle 11G
+          - generic [ref=e211]: SOAP
+          - generic [ref=e212]: AngularJS
+          - generic [ref=e213]: Shell
+  - generic [ref=e215]:
+    - generic [ref=e216]:
+      - generic [ref=e217]: Technical Skills
+      - heading "What I Work With" [level=2] [ref=e218]
+    - generic [ref=e219]:
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - img [ref=e223]
+          - heading "Frontend" [level=3] [ref=e226]
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - img [ref=e229]
+            - text: React
+          - generic [ref=e234]:
+            - img [ref=e235]:
+              - generic [ref=e237]: TS
+            - text: TypeScript
+          - generic [ref=e238]:
+            - img [ref=e239]:
+              - generic [ref=e241]: JS
+            - text: ES6+
+          - generic [ref=e242]:
+            - img [ref=e243]
+            - text: Redux
+          - generic [ref=e246]:
+            - img [ref=e247]
+            - text: Vue
+          - generic [ref=e249]:
+            - img [ref=e250]
+            - text: Angular
+          - generic [ref=e255]:
+            - img [ref=e256]
+            - text: Material UI
+          - generic [ref=e258]:
+            - img [ref=e259]
+            - text: HTML5
+          - generic [ref=e261]:
+            - img [ref=e262]
+            - text: CSS3
+          - generic [ref=e264]:
+            - img [ref=e265]
+            - text: Sass
+      - generic [ref=e267]:
+        - generic [ref=e268]:
+          - img [ref=e270]
+          - heading "Backend" [level=3] [ref=e275]
+        - generic [ref=e276]:
+          - generic [ref=e277]:
+            - img [ref=e278]
+            - text: Node.js
+          - generic [ref=e280]:
+            - img [ref=e281]
+            - text: Express
+          - generic [ref=e283]:
+            - img [ref=e284]:
+              - generic [ref=e286]: J
+            - text: Java
+          - generic [ref=e287]:
+            - img [ref=e288]
+            - text: Spring Boot
+          - generic [ref=e290]:
+            - img [ref=e291]
+            - text: GraphQL
+          - generic [ref=e293]:
+            - img [ref=e294]
+            - text: REST
+          - generic [ref=e296]:
+            - img [ref=e297]
+            - text: SOAP
+      - generic [ref=e300]:
+        - generic [ref=e301]:
+          - img [ref=e303]
+          - heading "Databases" [level=3] [ref=e307]
+        - generic [ref=e308]:
+          - generic [ref=e309]:
+            - img [ref=e310]
+            - text: MongoDB
+          - generic [ref=e312]:
+            - img [ref=e313]
+            - text: PostgreSQL
+          - generic [ref=e316]:
+            - img [ref=e317]
+            - text: MySQL
+          - generic [ref=e319]:
+            - img [ref=e320]
+            - text: Oracle 11G
+      - generic [ref=e322]:
+        - generic [ref=e323]:
+          - img [ref=e325]
+          - heading "DevOps & Tools" [level=3] [ref=e329]
+        - generic [ref=e330]:
+          - generic [ref=e331]:
+            - img [ref=e332]
+            - text: Docker
+          - generic [ref=e334]:
+            - img [ref=e335]
+            - text: Linux
+          - generic [ref=e338]:
+            - img [ref=e339]
+            - text: GitHub Actions
+          - generic [ref=e341]:
+            - img [ref=e342]
+            - text: CI/CD
+          - generic [ref=e345]:
+            - img [ref=e346]
+            - text: Jira
+      - generic [ref=e348]:
+        - generic [ref=e349]:
+          - img [ref=e351]
+          - heading "Testing" [level=3] [ref=e354]
+        - generic [ref=e355]:
+          - generic [ref=e356]:
+            - img [ref=e357]
+            - text: Jest
+          - generic [ref=e359]:
+            - img [ref=e360]
+            - text: Testing Library
+          - generic [ref=e362]:
+            - img [ref=e363]
+            - text: TDD
+      - generic [ref=e366]:
+        - generic [ref=e367]:
+          - img [ref=e369]
+          - heading "Methodologies" [level=3] [ref=e373]
+        - generic [ref=e374]:
+          - generic [ref=e375]:
+            - img [ref=e376]
+            - text: Agile
+          - generic [ref=e378]:
+            - img [ref=e379]
+            - text: Scrum
+          - generic [ref=e382]:
+            - img [ref=e383]
+            - text: Code Review
+  - generic [ref=e387]:
+    - generic [ref=e388]:
+      - generic [ref=e389]: Projects
+      - heading "Featured Work" [level=2] [ref=e390]
+    - generic [ref=e391]:
+      - generic [ref=e392]:
+        - generic [ref=e394]:
+          - img [ref=e395]
+          - generic [ref=e398]: Data Center Platform
+        - generic [ref=e399]:
+          - generic [ref=e400]: 3Pillar Global
+          - heading "Enterprise Monitoring Dashboard" [level=3] [ref=e401]
+          - paragraph [ref=e402]: Mission-critical data center management system with real-time monitoring, used by 1,000+ enterprise clients daily. Built with React, TypeScript, and Spring Boot microservices.
+          - generic [ref=e403]:
+            - generic [ref=e404]: React
+            - generic [ref=e405]: TypeScript
+            - generic [ref=e406]: Redux
+            - generic [ref=e407]: Spring Boot
+            - generic [ref=e408]: MySQL
+            - generic [ref=e409]: Prometheus
+          - link "View details" [ref=e411] [cursor=pointer]:
+            - /url: "#experience"
+            - img [ref=e412]
+            - text: View details
+      - generic [ref=e414]:
+        - generic [ref=e416]:
+          - img [ref=e417]
+          - generic [ref=e420]: E-Commerce Platform
+        - generic [ref=e421]:
+          - generic [ref=e422]: IBM / Home Depot
+          - heading "Home Depot USA Platform" [level=3] [ref=e423]
+          - paragraph [ref=e424]: Optimized and modernized the e-commerce platform serving 1M+ users. Migrated 30+ components from AngularJS to React and improved search efficiency by 20%.
+          - generic [ref=e425]:
+            - generic [ref=e426]: React
+            - generic [ref=e427]: Redux
+            - generic [ref=e428]: GraphQL
+            - generic [ref=e429]: Jest
+          - link "View details" [ref=e431] [cursor=pointer]:
+            - /url: "#experience"
+            - img [ref=e432]
+            - text: View details
+      - generic [ref=e434]:
+        - generic [ref=e436]:
+          - img [ref=e437]
+          - generic [ref=e440]: Streaming System
+        - generic [ref=e441]:
+          - generic [ref=e442]: Softtek
+          - heading "Video Streaming Platform" [level=3] [ref=e443]
+          - paragraph [ref=e444]: Architected a complete streaming system from scratch — frontend, backend, and database. Replaced legacy PHP with modern Node.js RESTful APIs.
+          - generic [ref=e445]:
+            - generic [ref=e446]: React
+            - generic [ref=e447]: Node.js
+            - generic [ref=e448]: Express
+            - generic [ref=e449]: MongoDB
+            - generic [ref=e450]: Redux
+          - link "GitHub" [ref=e452] [cursor=pointer]:
+            - /url: https://github.com/ccanales123
+            - img [ref=e453]
+            - text: GitHub
+  - generic [ref=e456]:
+    - generic [ref=e457]:
+      - generic [ref=e458]: Impact
+      - heading "8 Years. 1M+ Users. Real Results." [level=2] [ref=e459]
+    - generic [ref=e460]:
+      - generic [ref=e461]:
+        - generic [ref=e462]: "0"
+        - generic [ref=e463]: Years Experience
+      - generic [ref=e464]:
+        - generic [ref=e465]: "0"
+        - generic [ref=e466]: Users Impacted
+      - generic [ref=e467]:
+        - generic [ref=e468]: "0"
+        - generic [ref=e469]: Components Migrated
+      - generic [ref=e470]:
+        - generic [ref=e471]: "0"
+        - generic [ref=e472]: Search Efficiency
+  - generic [ref=e474]:
+    - generic [ref=e475]:
+      - generic [ref=e476]: Contact
+      - heading "Let's Build Something Great Together" [level=2] [ref=e477]:
+        - text: Let's Build Something
+        - text: Great Together
+    - paragraph [ref=e478]: I'm currently open to new opportunities. Whether you have a project, a team, or just want to connect — I'd love to hear from you.
+    - generic [ref=e479]:
+      - link "cesar.canales123@gmail.com" [ref=e480] [cursor=pointer]:
+        - /url: mailto:cesar.canales123@gmail.com
+        - img [ref=e481]
+        - text: cesar.canales123@gmail.com
+      - link "+52 812 942 9554" [ref=e484] [cursor=pointer]:
+        - /url: tel:+528129429554
+        - img [ref=e485]
+        - text: +52 812 942 9554
+    - generic [ref=e487]:
+      - link "LinkedIn" [ref=e488] [cursor=pointer]:
+        - /url: https://linkedin.com/in/cesar-canales-ab8b5279/
+        - img [ref=e489]
+      - link "GitHub" [ref=e491] [cursor=pointer]:
+        - /url: https://github.com/ccanales123
+        - img [ref=e492]
+  - contentinfo [ref=e495]:
+    - generic [ref=e496]: © 2026 Cesar Canales · Built with HTML, CSS & too much coffee
+    - generic [ref=e497]:
+      - link "LinkedIn" [ref=e498] [cursor=pointer]:
+        - /url: https://linkedin.com/in/cesar-canales-ab8b5279/
+      - link "GitHub" [ref=e499] [cursor=pointer]:
+        - /url: https://github.com/ccanales123
+      - link "Email" [ref=e500] [cursor=pointer]:
+        - /url: mailto:cesar.canales123@gmail.com

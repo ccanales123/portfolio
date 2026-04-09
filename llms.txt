@@ -1,0 +1,28 @@
+# Cesar Canales — Senior Full Stack Software Engineer
+> Professional portfolio and contact hub
+
+## About
+Cesar Canales is a Senior Full Stack Software Engineer with 8+ years of experience building high-traffic, mission-critical platforms for IBM, 3Pillar Global, Softtek, and Global Hitss. Specializes in React, TypeScript, Node.js, Java 11, and Spring Boot. Based in Hidalgo, Mexico. Open to remote opportunities globally.
+
+## Key Achievements
+- Built enterprise data center management system used by 1,000+ clients at 3Pillar Global
+- Contributed to Home Depot USA platform serving 1M+ users at IBM
+- Migrated 30+ legacy AngularJS components to React, improving search efficiency by 20%
+- Led backend architecture with Spring Security & Azure AD OAuth2
+
+## Education
+- B.S. Computer Systems Engineering — Universidad Politecnica de Queretaro
+
+## Technical Skills
+Frontend: React, TypeScript, JavaScript (ES6+), Angular, HTML5, CSS3, Redux, Material UI
+Backend: Node.js, Java 11, Spring Boot, Spring Security, Express, REST, GraphQL, SOAP
+Databases: MySQL, PostgreSQL, MongoDB, Redis
+DevOps: Docker, Azure, AWS, CI/CD, GitHub Actions
+Testing: Jest, Testing Library, TDD
+Methodologies: Agile, Scrum, Code Review, Conventional Commits
+
+## Contact
+- Portfolio: https://cesarcanales.dev
+- LinkedIn: https://linkedin.com/in/cesar-canales-ab8b5279/
+- GitHub: https://github.com/ccanales123
+- Phone: +52-812-942-9554
