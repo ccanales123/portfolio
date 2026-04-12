@@ -6,10 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "serve dist -s -l 8080",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.19"
+    "astro": "^4.16.19",
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
