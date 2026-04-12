@@ -1,0 +1,31 @@
+---
+// src/components/Impact.astro
+import type { Translations } from '../i18n/en';
+interface Props { t: Translations; }
+const { t } = Astro.props;
+---
+<section id="impact">
+  <div class="reveal">
+    <div class="section-label">{t.impact.label}</div>
+    <h2 class="section-title">{t.impact.title}</h2>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-card reveal">
+      <div class="impact-number" data-target="8">0</div>
+      <div class="impact-label">{t.impact.years}</div>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-number" data-target="1000000" data-format="M">0</div>
+      <div class="impact-label">{t.impact.users}</div>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-number" data-target="30" data-suffix="+">0</div>
+      <div class="impact-label">{t.impact.components}</div>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-number" data-target="20" data-suffix="%">0</div>
+      <div class="impact-label">{t.impact.search}</div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>

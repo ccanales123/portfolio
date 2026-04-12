@@ -1,0 +1,81 @@
+---
+// src/components/Projects.astro
+import type { Translations } from '../i18n/en';
+interface Props { t: Translations; }
+const { t } = Astro.props;
+---
+<section id="projects">
+  <div class="reveal">
+    <div class="section-label">{t.projects.label}</div>
+    <h2 class="section-title">{t.projects.title}</h2>
+  </div>
+  <div class="projects-grid stagger-children">
+    <div class="project-card reveal">
+      <div class="project-preview">
+        <div class="project-preview-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <span>Data Center Platform</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-label">3Pillar Global</div>
+        <h3 class="project-name">{t.projects.p1t}</h3>
+        <p class="project-desc">{t.projects.p1d}</p>
+        <div class="project-tech">
+          <span>React</span><span>TypeScript</span><span>Redux</span><span>Spring Boot</span><span>MySQL</span><span>Prometheus</span>
+        </div>
+        <div class="project-links">
+          <a href="#experience">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            View details
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-preview">
+        <div class="project-preview-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>E-Commerce Platform</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-label">IBM / Home Depot</div>
+        <h3 class="project-name">{t.projects.p2t}</h3>
+        <p class="project-desc">{t.projects.p2d}</p>
+        <div class="project-tech">
+          <span>React</span><span>Redux</span><span>GraphQL</span><span>Jest</span>
+        </div>
+        <div class="project-links">
+          <a href="#experience">
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            View details
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-preview">
+        <div class="project-preview-icon">
+          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <span>Streaming System</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-label">Softtek</div>
+        <h3 class="project-name">{t.projects.p3t}</h3>
+        <p class="project-desc">{t.projects.p3d}</p>
+        <div class="project-tech">
+          <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Redux</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ccanales123" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>

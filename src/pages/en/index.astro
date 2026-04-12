@@ -1,0 +1,31 @@
+---
+// src/pages/en/index.astro
+import { t } from '../../i18n/en';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Loader from '../../components/Loader.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import ValueProps from '../../components/ValueProps.astro';
+import Experience from '../../components/Experience.astro';
+import Skills from '../../components/Skills.astro';
+import Projects from '../../components/Projects.astro';
+import Impact from '../../components/Impact.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout lang="en" t={t}>
+  <Loader />
+  <Nav t={t} lang="en" />
+  <main>
+    <Hero t={t} />
+    <About t={t} />
+    <ValueProps t={t} />
+    <Experience t={t} />
+    <Skills t={t} />
+    <Projects t={t} />
+    <Impact t={t} />
+    <Contact t={t} />
+  </main>
+  <Footer />
+</BaseLayout>

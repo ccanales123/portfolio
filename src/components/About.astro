@@ -1,0 +1,50 @@
+---
+// src/components/About.astro
+import type { Translations } from '../i18n/en';
+
+interface Props { t: Translations; }
+const { t } = Astro.props;
+---
+<!-- Trusted By -->
+<div class="companies-section">
+  <div class="companies-inner">
+    <span class="companies-label">{t.companies.label}</span>
+    <span class="company-logo">3Pillar Global</span>
+    <span class="company-logo">IBM</span>
+    <span class="company-logo">Softtek</span>
+    <span class="company-logo">Global Hitss</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">{t.about.label}</div>
+    <h2 class="section-title">{t.about.title}</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal-left">
+      <p set:html={t.about.p1}></p>
+      <p set:html={t.about.p2}></p>
+      <p>{t.about.p3}</p>
+    </div>
+    <div class="about-cards reveal-right">
+      <div class="about-card">
+        <div class="about-card-label">{t.about.location}</div>
+        <div class="about-card-value">Hidalgo, Mexico</div>
+        <div class="about-card-sub">{t.about.remote}</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">{t.about.languages}</div>
+        <div class="lang-row"><span>{t.about.spanish}</span><span class="lang-badge">{t.about.native}</span></div>
+        <div class="lang-row"><span>{t.about.english}</span><span class="lang-badge">{t.about.professional}</span></div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">{t.about.education}</div>
+        <div class="about-card-value">{t.about.degree}</div>
+        <div class="about-card-sub">Univ. Politecnica de Queretaro</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>

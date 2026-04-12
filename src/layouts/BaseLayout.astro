@@ -1,0 +1,241 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+import type { Translations } from '../i18n/en';
+
+interface Props {
+  lang: 'en' | 'es';
+  t: Pick<Translations, 'meta'>;
+}
+
+const { lang, t } = Astro.props;
+const canonical = `https://cesarcanales.dev/${lang}/`;
+const ogLocale = lang === 'en' ? 'en_US' : 'es_MX';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cesarcanales.dev/#person",
+      "name": "Cesar Canales",
+      "url": "https://cesarcanales.dev",
+      "image": { "@type": "ImageObject", "url": "https://cesarcanales.dev/og-image.png", "width": 1200, "height": 630 },
+      "jobTitle": "Senior Full Stack Software Engineer",
+      "description": "Senior Full Stack Software Engineer with 8+ years of experience building high-traffic platforms for IBM, 3Pillar Global, and Softtek.",
+      "telephone": "+52-812-942-9554",
+      "address": { "@type": "PostalAddress", "addressLocality": "Hidalgo", "addressCountry": "MX" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Politecnica de Queretaro" },
+      "knowsAbout": ["React", "TypeScript", "Node.js", "Java", "Spring Boot", "Redux", "GraphQL", "MySQL", "PostgreSQL", "MongoDB", "Docker", "Azure", "AWS", "CI/CD", "Agile", "Scrum", "TDD"],
+      "sameAs": ["https://linkedin.com/in/cesar-canales-ab8b5279/", "https://github.com/ccanales123"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://cesarcanales.dev/#website",
+      "name": "Cesar Canales — Portfolio",
+      "url": "https://cesarcanales.dev",
+      "author": { "@id": "https://cesarcanales.dev/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `https://cesarcanales.dev/${lang}/#profilepage`,
+      "url": canonical,
+      "name": t.meta.title,
+      "isPartOf": { "@id": "https://cesarcanales.dev/#website" },
+      "about": { "@id": "https://cesarcanales.dev/#person" },
+      "dateModified": "2026-04-08T00:00:00Z"
+    }
+  ]
+};
+---
+<!DOCTYPE html>
+<html lang={lang} data-theme="dark">
+<head>
+  <!-- Theme FOUC prevention — must be first -->
+  <script is:inline>
+    const theme = localStorage.getItem('portfolio-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{t.meta.title}</title>
+  <meta name="description" content={t.meta.description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://cesarcanales.dev/en/">
+  <link rel="alternate" hreflang="es" href="https://cesarcanales.dev/es/">
+  <link rel="alternate" hreflang="x-default" href="https://cesarcanales.dev/en/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content={t.meta.title}>
+  <meta property="og:description" content={t.meta.description}>
+  <meta property="og:image" content="https://cesarcanales.dev/og-image.png">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:site_name" content="Cesar Canales">
+  <meta property="og:locale" content={ogLocale}>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={t.meta.title}>
+  <meta name="twitter:description" content={t.meta.description}>
+  <meta name="twitter:image" content="https://cesarcanales.dev/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0b'/%3E%3Crect x='1' y='1' width='62' height='62' rx='13' fill='none' stroke='%2300e5a0' stroke-width='1.5' opacity='0.3'/%3E%3Ctext x='32' y='42' font-family='system-ui,sans-serif' font-size='28' font-weight='700' fill='%2300e5a0' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts — non-blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</head>
+<body>
+  <div class="bg-aurora">
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
+    <div class="bg-orb bg-orb--4"></div>
+  </div>
+  <div class="bg-dots"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <slot />
+
+  <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </a>
+
+  <!-- Global scripts: theme, scroll, reveals, tilt, cursor, counters -->
+  <script>
+    // ═══ THEME ═══
+    function getTheme() { return localStorage.getItem('portfolio-theme') || 'dark'; }
+    function setTheme(t: string) {
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('portfolio-theme', t);
+    }
+
+    document.getElementById('themeToggle')?.addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+    document.getElementById('mobileThemeToggle')?.addEventListener('click', () => setTheme(getTheme() === 'dark' ? 'light' : 'dark'));
+
+    // ═══ SCROLL PROGRESS ═══
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+      const el = document.getElementById('scrollProgress');
+      if (el) el.style.width = pct + '%';
+    }, { passive: true });
+
+    // ═══ BACK TO TOP ═══
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (backToTop) backToTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+
+    // ═══ REVEAL ON SCROLL ═══
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const children = e.target.querySelectorAll(':scope > *');
+          children.forEach((child, i) => setTimeout(() => child.classList.add('visible'), i * 100));
+          staggerObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.stagger-children').forEach(el => staggerObserver.observe(el));
+
+    // ═══ TILT 3D ═══
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e: Event) => {
+        const me = e as MouseEvent;
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const x = (me.clientX - rect.left) / rect.width - 0.5;
+        const y = (me.clientY - rect.top) / rect.height - 0.5;
+        (card as HTMLElement).style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) scale(1.02)`;
+        const spotlight = card.querySelector('.spotlight') as HTMLElement;
+        if (spotlight) { spotlight.style.left = `${me.clientX - rect.left}px`; spotlight.style.top = `${me.clientY - rect.top}px`; }
+      });
+      card.addEventListener('mouseleave', () => { (card as HTMLElement).style.transform = ''; });
+    });
+
+    // ═══ IMPACT COUNTERS ═══
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        const target = parseInt(el.dataset.target || '0');
+        const fmt = el.dataset.format;
+        const suffix = el.dataset.suffix || '';
+        let start = 0;
+        const duration = 2000;
+        const step = (timestamp: number) => {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const val = Math.floor(progress * target);
+          el.textContent = fmt === 'M' ? (val >= 1000000 ? '1M+' : (val / 1000).toFixed(0) + 'K') : val + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = fmt === 'M' ? '1M+' : target + suffix;
+        };
+        requestAnimationFrame(step);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.impact-number').forEach(el => counterObserver.observe(el));
+
+    // ═══ CURSOR TRAIL ═══
+    const trail: HTMLElement[] = [];
+    for (let i = 0; i < 8; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      document.body.appendChild(dot);
+      trail.push(dot);
+    }
+    let mouse = { x: -100, y: -100 };
+    const positions = trail.map(() => ({ x: -100, y: -100 }));
+    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    function animateTrail() {
+      positions[0].x += (mouse.x - positions[0].x) * 0.3;
+      positions[0].y += (mouse.y - positions[0].y) * 0.3;
+      for (let i = 1; i < trail.length; i++) {
+        positions[i].x += (positions[i - 1].x - positions[i].x) * 0.5;
+        positions[i].y += (positions[i - 1].y - positions[i].y) * 0.5;
+      }
+      trail.forEach((dot, i) => {
+        dot.style.left = positions[i].x + 'px';
+        dot.style.top = positions[i].y + 'px';
+        dot.style.opacity = String(1 - i / trail.length);
+        dot.style.transform = `scale(${1 - i * 0.1})`;
+      });
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+
+    // ═══ NAV ACTIVE SECTION ═══
+    const navLinks = document.querySelectorAll('[data-section]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const id = e.target.id;
+          navLinks.forEach(l => { if ((l as HTMLElement).dataset.section === id) l.classList.add('active'); });
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+    // ═══ NAV SCROLL SHADOW ═══
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => { nav?.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+  </script>
+</body>
+</html>

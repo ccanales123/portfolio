@@ -1,0 +1,91 @@
+---
+// src/components/Hero.astro
+import type { Translations } from '../i18n/en';
+
+interface Props { t: Translations; }
+const { t } = Astro.props;
+---
+<section class="hero" id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="status-dot"></span>
+      <span>{t.hero.tag}</span>
+    </div>
+    <div class="hero-identity">
+      <div class="avatar-ring avatar-pulse">
+        <div class="avatar-inner">CC</div>
+      </div>
+      <h1 class="hero-name">
+        Cesar
+        <span class="hero-name-gradient">Canales</span>
+      </h1>
+    </div>
+    <p class="hero-title">{t.hero.title}</p>
+    <p class="hero-summary" set:html={t.hero.summary}></p>
+    <div class="hero-actions">
+      <a href="mailto:cesar.canales123@gmail.com" class="btn btn-primary">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        <span>{t.hero.cta}</span>
+      </a>
+      <a href="/Cesar_Canales_Resume.pdf" download class="btn btn-outline">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        <span>{t.hero.downloadCV}</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="terminal glow-border">
+      <div class="terminal-header">
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <div class="terminal-dot"></div>
+        <span class="terminal-title">cesar@dev ~ /about</span>
+      </div>
+      <div class="terminal-body" id="terminalBody"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ═══ TYPEWRITER ═══
+  const lines = [
+    { text: '$ whoami', delay: 0 },
+    { text: 'cesar_canales', delay: 400, class: 'accent' },
+    { text: '$ cat skills.txt', delay: 900 },
+    { text: 'React · TypeScript · Node.js · Java · Spring Boot', delay: 1300, class: 'dim' },
+    { text: '$ git log --oneline -3', delay: 1900 },
+    { text: 'a1b2c3d feat: 1M+ users on Home Depot platform', delay: 2300, class: 'dim' },
+    { text: 'e4f5g6h feat: enterprise dashboard 1k+ clients', delay: 2500, class: 'dim' },
+    { text: 'h7i8j9k feat: streaming platform from scratch', delay: 2700, class: 'dim' },
+    { text: '$ echo $STATUS', delay: 3200 },
+    { text: 'Available for hire ✓', delay: 3600, class: 'success' },
+  ];
+
+  const body = document.getElementById('terminalBody');
+  if (body) {
+    lines.forEach(({ text, delay, class: cls }) => {
+      setTimeout(() => {
+        const line = document.createElement('div');
+        line.className = `t-line${cls ? ' t-' + cls : ''}`;
+        body.appendChild(line);
+        let i = 0;
+        const cursor = document.createElement('span');
+        cursor.className = 't-cursor';
+        cursor.textContent = '|';
+        line.appendChild(cursor);
+        function type() {
+          if (i < text.length) {
+            line.insertBefore(document.createTextNode(text[i++]), cursor);
+            setTimeout(type, 35 + Math.random() * 40);
+          } else {
+            cursor.remove();
+          }
+        }
+        type();
+      }, delay);
+    });
+  }
+</script>
