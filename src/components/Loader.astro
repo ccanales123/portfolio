@@ -1,0 +1,13 @@
+---
+// src/components/Loader.astro
+---
+<div class="loader" id="loader">
+  <span class="loader-text">cesar.canales</span>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    document.getElementById('loader')?.classList.add('done');
+  });
+</script>

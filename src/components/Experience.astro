@@ -1,0 +1,39 @@
+---
+// src/components/Experience.astro
+import type { Translations } from '../i18n/en';
+
+interface Props { t: Translations; }
+const { t } = Astro.props;
+
+const jobs = [
+  { company: '3Pillar Global', ...t.exp.threePillar },
+  { company: 'IBM', ...t.exp.ibm },
+  { company: 'Softtek', ...t.exp.softtek },
+  { company: 'Global Hitss', ...t.exp.globalHitss },
+];
+---
+<section id="experience">
+  <div class="reveal">
+    <div class="section-label">{t.exp.label}</div>
+    <h2 class="section-title">{t.exp.title}</h2>
+  </div>
+  <div class="timeline">
+    {jobs.map(job => (
+      <div class="timeline-item reveal">
+        <div class="timeline-date">{job.date}</div>
+        <div class="timeline-header">
+          <h3 class="timeline-company hover-line">{job.company}</h3>
+          <span class="timeline-location">{job.loc}</span>
+        </div>
+        <p class="timeline-role">{job.role}</p>
+        <ul class="timeline-highlights">
+          {job.bullets.map(b => <li set:html={b} />)}
+        </ul>
+        <div class="timeline-tech">
+          {job.tech.map(s => <span>{s}</span>)}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+<div class="section-divider"></div>
