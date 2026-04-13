@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "serve dist -s -l 8080",
+    "start": "serve dist -l 8080",
     "astro": "astro"
   },
   "dependencies": {
