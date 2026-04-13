@@ -140,8 +140,19 @@ const schema = {
     // ═══ REVEAL ON SCROLL ═══
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+
+    function initReveal() {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('visible');
+        } else {
+          revealObserver.observe(el);
+        }
+      });
+    }
+    initReveal();
 
     const staggerObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -151,7 +162,7 @@ const schema = {
           staggerObserver.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     document.querySelectorAll('.stagger-children').forEach(el => staggerObserver.observe(el));
 
     // ═══ TILT 3D ═══
