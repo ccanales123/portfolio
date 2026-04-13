@@ -1817,7 +1817,7 @@
     /* ══════ RESPONSIVE ══════ */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
-      .hero-right { order: -1; }
+      .hero-left { order: -1; }
       .hero-grid-bg { display: none; }
       .nav-links { display: none; }
       .theme-btn.desktop-only { display: none; }
