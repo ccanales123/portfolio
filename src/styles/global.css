@@ -1256,22 +1256,15 @@
     .footer-links a:hover { color: var(--text); }
 
     /* ══════ REVEAL ══════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
+    .reveal, .reveal-left, .reveal-right, .reveal-scale {
+      opacity: 1;
+      transform: none;
       transition: all 0.7s var(--ease-out);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ══════ REVEAL FALLBACK ══════ */
-    /* Ensure elements are visible if JS is slow or fails */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .reveal-left, .reveal-right, .reveal-scale {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
     /* ══════ LIGHT MODE FIXES ══════ */
     [data-theme="light"] .hero-glow {
@@ -1718,8 +1711,8 @@
 
     /* ══════ STAGGER CHILDREN ══════ */
     .stagger-children > * {
-      opacity: 0;
-      transform: translateY(15px);
+      opacity: 1;
+      transform: none;
       transition: all 0.5s var(--ease-out);
     }
     .stagger-children.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
@@ -1773,24 +1766,11 @@
     }
 
     /* ══════ REVEAL VARIATIONS ══════ */
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-30px);
+    .reveal-left, .reveal-right, .reveal-scale {
+      opacity: 1;
+      transform: none;
       transition: all 0.7s var(--ease-out);
     }
-    .reveal-left.visible { opacity: 1; transform: translateX(0); }
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(30px);
-      transition: all 0.7s var(--ease-out);
-    }
-    .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: all 0.7s var(--ease-out);
-    }
-    .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
     /* ══════ COMPANY LOGOS STRIP ══════ */
     .companies-section {
